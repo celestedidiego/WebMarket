@@ -29,7 +29,15 @@ public interface PropostaAcquisto extends DataItem<Integer> {
     String getProduttore();
 
     void setProduttore(String produttore);
+    
+    String getNomeProdotto();
 
+    void setNomeProdotto(String nomeProdotto);
+    
+    Float getPrezzo();
+
+    void setPrezzo(Float prezzo);
+    
     String getNote();
 
     void setNote(String note);
@@ -37,22 +45,14 @@ public interface PropostaAcquisto extends DataItem<Integer> {
     String getURL();
 
     void setURL(String URL);
+    
+    String getMotivazione();
 
-    Float getPrezzo();
-
-    void setPrezzo(Float prezzo);
-
-    String getNomeProdotto();
-
-    void setNomeProdotto(String nomeProdotto);
+    void setMotivazione(String motivazione);
 
     String getStatoProposta();
 
     void setStatoProposta(String statoProposta);
-
-    String getMotivazione();
-
-    void setMotivazione(String motivazione);
 
     RichiestaPresaInCarico getRichiestaPresaInCarico();
 

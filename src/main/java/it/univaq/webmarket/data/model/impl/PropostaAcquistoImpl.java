@@ -23,12 +23,12 @@ public class PropostaAcquistoImpl extends DataItemImpl<Integer> implements Propo
     public PropostaAcquistoImpl() {
         this.codiceProdotto = "";
         this.produttore = "";
-        this.note = "";
-        this.prezzo = 0F;
         this.nomeProdotto = "";
+        this.prezzo = 0F;
+        this.note = "";
         this.URL = "";
-        this.statoProposta = "";
         this.motivazione = "";
+        this.statoProposta = "";
         this.richiestaPresaInCarico = null;
     }
 
@@ -51,27 +51,7 @@ public class PropostaAcquistoImpl extends DataItemImpl<Integer> implements Propo
     public void setProduttore(String produttore) {
         this.produttore = produttore;
     }
-
-    @Override
-    public String getNote() {
-        return note;
-    }
-
-    @Override
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    @Override
-    public Float getPrezzo() {
-        return prezzo;
-    }
-
-    @Override
-    public void setPrezzo(Float prezzo) {
-        this.prezzo = prezzo;
-    }
-
+    
     @Override
     public String getNomeProdotto() {
         return nomeProdotto;
@@ -83,13 +63,35 @@ public class PropostaAcquistoImpl extends DataItemImpl<Integer> implements Propo
     }
 
     @Override
-    public String getStatoProposta() { return statoProposta;}
-
-    @Override
-    public void setStatoProposta(String statoProposta) {
-        this.statoProposta = statoProposta;
+    public Float getPrezzo() {
+        return prezzo;
     }
 
+    @Override
+    public void setPrezzo(Float prezzo) {
+        this.prezzo = prezzo;
+    }
+    
+    @Override
+    public String getNote() {
+        return note;
+    }
+
+    @Override
+    public void setNote(String note) {
+        this.note = note;
+    }
+    
+    @Override
+    public String getURL() {
+        return this.URL;
+    }
+
+    @Override
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
+    
     @Override
     public String getMotivazione() {
         return motivazione;
@@ -99,26 +101,23 @@ public class PropostaAcquistoImpl extends DataItemImpl<Integer> implements Propo
     public void setMotivazione(String motivazione) {
         this.motivazione = motivazione;
     }
+
+    @Override
+    public String getStatoProposta() { return statoProposta;}
+
+    @Override
+    public void setStatoProposta(String statoProposta) {
+        this.statoProposta = statoProposta;
+    }
     
     @Override
     public RichiestaPresaInCarico getRichiestaPresaInCarico() {
         return this.richiestaPresaInCarico;
     }
 
-
     @Override
     public void setRichiestaPresaInCarico(RichiestaPresaInCarico richiestaPresaInCarico) {
         this.richiestaPresaInCarico = richiestaPresaInCarico;
-    }
-
-    @Override
-    public String getURL() {
-        return this.URL;
-    }
-
-    @Override
-    public void setURL(String URL) {
-        this.URL = URL;
     }
 
     @Override

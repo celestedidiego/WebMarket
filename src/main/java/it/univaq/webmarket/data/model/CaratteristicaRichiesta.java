@@ -11,6 +11,7 @@ import it.univaq.webmarket.framework.data.DataItem;
  *
  * @author cdidi
  */
+
 public interface CaratteristicaRichiesta extends DataItem<Integer> {
     
     Caratteristica getCaratteristica();
