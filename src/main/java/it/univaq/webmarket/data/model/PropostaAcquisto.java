@@ -11,6 +11,7 @@ import it.univaq.webmarket.framework.data.DataItem;
  *
  * @author cdidi
  */
+
 public interface PropostaAcquisto extends DataItem<Integer> {
     
     class StatoProposta {
@@ -18,24 +19,17 @@ public interface PropostaAcquisto extends DataItem<Integer> {
         public static final String IN_ATTESA = "In attesa";
         public static final String ACCETTATO = "Accettato";
         public static final String RIFIUTATO = "Rifiutato";
+
     }
-    
+
     String getCodiceProdotto();
 
     void setCodiceProdotto(String codiceProdotto);
-    
+
     String getProduttore();
 
     void setProduttore(String produttore);
-    
-    String getNomeProdotto();
 
-    void setNomeProdotto(String nomeProdotto);
-    
-    Float getPrezzo();
-
-    void setPrezzo(Float prezzo);
-    
     String getNote();
 
     void setNote(String note);
@@ -43,16 +37,24 @@ public interface PropostaAcquisto extends DataItem<Integer> {
     String getURL();
 
     void setURL(String URL);
-    
-    String getMotivazione();
 
-    void setMotivazione(String motivazione);
-    
+    Float getPrezzo();
+
+    void setPrezzo(Float prezzo);
+
+    String getNomeProdotto();
+
+    void setNomeProdotto(String nomeProdotto);
+
     String getStatoProposta();
 
     void setStatoProposta(String statoProposta);
-    
-    RichiestaOrdine getRichiestaOrdine();
 
-    void setRichiestaOrdine(RichiestaOrdine richiestaOrdine);
+    String getMotivazione();
+
+    void setMotivazione(String motivazione);
+
+    RichiestaPresaInCarico getRichiestaPresaInCarico();
+
+    void setRichiestaPresaInCarico(RichiestaPresaInCarico richiestaPresaInCarico);
 }
