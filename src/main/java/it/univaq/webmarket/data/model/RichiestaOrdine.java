@@ -31,7 +31,7 @@ public interface RichiestaOrdine extends DataItem<Integer>{
 
     void setData(LocalDate dataEOra);
 
-    List<CaratteristicaRichiesta> getCaratteristicaRichiesta();
+    List<CaratteristicaRichiesta> getCaratteristicheRichiesta();
 
-    void setCaratteristicaRichiesta(List<CaratteristicaRichiesta> caratteristicaRichiesta);
+    void setCaratteristicheRichiesta(List<CaratteristicaRichiesta> caratteristicheRichiesta);
 }

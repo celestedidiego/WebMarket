@@ -24,7 +24,7 @@ public class RichiestaOrdineImpl extends DataItemImpl<Integer> implements Richie
     private String codiceRichiesta;
     private LocalDate data;
     private Ordinante ordinante;
-    private List<CaratteristicaRichiesta> caratteristicaRichiesta;
+    private List<CaratteristicaRichiesta> caratteristicheRichiesta;
 
     public RichiestaOrdineImpl() {
         super();
@@ -32,7 +32,7 @@ public class RichiestaOrdineImpl extends DataItemImpl<Integer> implements Richie
         this.codiceRichiesta = "";
         this.data = null;
         this.ordinante = null;
-        this.caratteristicaRichiesta = null;
+        this.caratteristicheRichiesta = null;
     }
 
     @Override
@@ -68,13 +68,13 @@ public class RichiestaOrdineImpl extends DataItemImpl<Integer> implements Richie
     public void setData(LocalDate data) { this.data = data; }
 
     @Override
-    public List<CaratteristicaRichiesta> getCaratteristicaRichiesta() {
-        return this.caratteristicaRichiesta;
+    public List<CaratteristicaRichiesta> getCaratteristicheRichiesta() {
+        return this.caratteristicheRichiesta;
     }
 
     @Override
-    public void setCaratteristicaRichiesta(List<CaratteristicaRichiesta> caratteristicaRichiesta) {
-        this.caratteristicaRichiesta = caratteristicaRichiesta;
+    public void setCaratteristicheRichiesta(List<CaratteristicaRichiesta> caratteristicheRichiesta) {
+        this.caratteristicheRichiesta = caratteristicheRichiesta;
     }
 
     @Override
@@ -84,7 +84,7 @@ public class RichiestaOrdineImpl extends DataItemImpl<Integer> implements Richie
                 ", codiceRichiesta='" + codiceRichiesta + '\'' +
                 ", data=" + data +
                 ", ordinante=" + ordinante +
-                ", caratteristicaRichiesta=" + caratteristicaRichiesta +
+                ", caratteristicaRichiesta=" + caratteristicheRichiesta +
                 '}';
     }
 }

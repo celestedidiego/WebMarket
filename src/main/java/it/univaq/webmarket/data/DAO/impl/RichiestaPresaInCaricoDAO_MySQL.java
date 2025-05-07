@@ -130,7 +130,7 @@ public class RichiestaPresaInCaricoDAO_MySQL extends DAO implements RichiestaPre
     public List<RichiestaPresaInCarico> getAllRichiestePresaInCaricoByTecnico(Tecnico tecnico, Integer  page) throws DataException {
         List<RichiestaPresaInCarico> result = new ArrayList<>();
         try {
-            //SELECT ID FROM richiestapresaincarico WHERE ID_tecnico_preventivi=? LIMIT ?, ?
+            
             sRichiestePresaInCaricoByTecnico.setInt(1,tecnico.getKey());
             sRichiestePresaInCaricoByTecnico.setInt(2, page * offset);
             sRichiestePresaInCaricoByTecnico.setInt(3, offset);

@@ -19,7 +19,7 @@
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>${jakartaee}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>   
         
         <!-- FREEMARKER -->
         <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->

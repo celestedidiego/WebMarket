@@ -5,7 +5,7 @@
 
 package it.univaq.webmarket.data.model.impl.proxy;
 
-import it.univaq.webmarket.data.model.impl.AmministratoreImpl;
+import it.univaq.webmarket.data.model.impl.TecnicoImpl;
 import it.univaq.webmarket.framework.data.DataItemProxy;
 import it.univaq.webmarket.framework.data.DataLayer;
 
@@ -14,21 +14,15 @@ import it.univaq.webmarket.framework.data.DataLayer;
  * @author cdidi
  */
 
-public class AmministratoreProxy extends AmministratoreImpl implements DataItemProxy {
+public class TecnicoProxy extends TecnicoImpl implements DataItemProxy {
     
     protected boolean modified;
     protected DataLayer dataLayer;
 
-    public AmministratoreProxy(DataLayer dataLayer) {
+    public TecnicoProxy(DataLayer dataLayer) {
         super();
         this.dataLayer = dataLayer;
         this.modified = false;
-    }
-
-    @Override
-    public void setKey(Integer key) {
-        super.setKey(key);
-        this.modified = true;
     }
 
     @Override
@@ -43,16 +37,13 @@ public class AmministratoreProxy extends AmministratoreImpl implements DataItemP
         this.modified = true;
     }
 
-    //METODI DEL PROXY
-    //PROXY-ONLY METHODS
+    @Override
+    public boolean isModified() {
+        return modified;
+    }
 
     @Override
     public void setModified(boolean dirty) {
         this.modified = dirty;
     }
-
-    @Override
-    public boolean isModified() {
-        return modified;
-    }    
 }
