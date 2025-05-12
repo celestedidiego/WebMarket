@@ -6,10 +6,11 @@
 package it.univaq.webmarket.framework.application;
 
 //AGGIUNGERE CODICE PER LE MAIL E ANCHE SU UTILS
-//import it.univaq.webmarket.framework.utils.EmailSender;
+import it.univaq.webmarket.framework.utils.EmailSender;
 
 import java.util.Arrays;
 import java.util.logging.Level;
+import java.util.Properties;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -31,6 +32,7 @@ public class ApplicationInitializer implements ServletContextListener {
 
         DataSource ds = null;
         Pattern protect = null;
+        EmailSender sender = null;
 
         //init protection pattern
         String p = event.getServletContext().getInitParameter("security.protect.patterns");
@@ -45,11 +47,24 @@ public class ApplicationInitializer implements ServletContextListener {
         try {
             InitialContext ctx = new InitialContext();
             ds = (DataSource) ctx.lookup("java:comp/env/" + event.getServletContext().getInitParameter("data.source"));
+
+            String emailSender = (String) ctx.lookup("java:comp/env/email");
+            String passwordSender = (String) ctx.lookup("java:comp/env/password");
+
+            Properties properties = System.getProperties();
+            properties.put("mail.smtp.host", "smtp-mail.outlook.com");
+            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
+            sender = new EmailSender(emailSender, passwordSender, properties);
         } catch (NamingException ex) {
             Logger.getLogger(ApplicationInitializer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         event.getServletContext().setAttribute("protect", protect);
         event.getServletContext().setAttribute("datasource", ds);
+        event.getServletContext().setAttribute("emailsender", sender);
     }
 }

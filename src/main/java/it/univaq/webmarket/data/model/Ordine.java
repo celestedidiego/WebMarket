@@ -30,6 +30,7 @@ public interface Ordine extends DataItem<Integer> {
         
         public static final String ACCETTATO = "Accettato";
         public static final String RESPINTO = "Respinto";
+        public static final String RIFIUTATO = "Rifiutato";
     }
     
     LocalDate getDataConsegna();

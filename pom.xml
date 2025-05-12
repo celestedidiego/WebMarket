@@ -19,6 +19,14 @@
             <artifactId>jakarta.jakartaee-api</artifactId>
             <version>${jakartaee}</version>
             <scope>provided</scope>
+        </dependency>
+        
+        <!-- necessario solo per per InitialContext e @Resource -->
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>1.3.2</version>
+            <scope>provided</scope>
         </dependency>   
         
         <!-- FREEMARKER -->
@@ -43,6 +51,42 @@
             <version>9.2.0</version>
         </dependency>
         
+        <dependency>
+            <groupId>org.eclipse.ee4j.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.ee4j.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        
+        <!-- Aggiunto da download dipendenza Maven -->
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf</artifactId>
+            <version>9.1.20</version>
+        </dependency>
+        
+        <!-- Aggiunto da download dipendenza Maven -->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>2.1.5</version>
+            <type>jar</type>
+        </dependency>
+        
+        <!-- Aggiunto da download dipendenza Maven -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version>
+            <type>jar</type>
+        </dependency>
+
+      
     </dependencies>
     
     <build>
