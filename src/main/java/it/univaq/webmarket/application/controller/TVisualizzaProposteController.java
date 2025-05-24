@@ -30,7 +30,7 @@ import java.util.Map;
  * @author cdidi
  */
 
-public class TVisualizzazioneProposte extends ApplicationBaseController {
+public class TVisualizzaProposteController extends ApplicationBaseController {
     
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -64,7 +64,7 @@ public class TVisualizzazioneProposte extends ApplicationBaseController {
             handleError(e, request, response);
         }
 
-        result.activate("TProposte.ftl", datamodel, request, response);
+        result.activate("TProposteAcquisto.ftl", datamodel, request, response);
     }
 
 
