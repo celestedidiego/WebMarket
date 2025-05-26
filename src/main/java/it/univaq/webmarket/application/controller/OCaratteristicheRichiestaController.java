@@ -53,7 +53,7 @@ public class OCaratteristicheRichiestaController extends ApplicationBaseControll
             handleError(e, request, response);
         }
 
-        result.activate("caratteristicaRichiesta.ftl", datamodel, request, response);
+        result.activate("caratteristicaRichiesta.ftl.html", datamodel, request, response);
 
     }
 
@@ -74,7 +74,7 @@ public class OCaratteristicheRichiestaController extends ApplicationBaseControll
             CaratteristicaRichiesta caratteristicaRichiesta = dl.getCaratteristicaDAO().getCaratteristicaRichiesta(caratteristicaRichiestaID);
             datamodel.put("caratteristicaRichiesta", caratteristicaRichiesta);
 
-            result.activate("caratteristicaRichiesta.ftl", datamodel, request, response);
+            result.activate("caratteristicaRichiesta.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -106,7 +106,7 @@ public class OCaratteristicheRichiestaController extends ApplicationBaseControll
             datamodel.put("caratteristiche", dl.getCaratteristicaDAO().getCaratteristicheRichiesta(richiesta));
             datamodel.put("richiesta", richiesta);
 
-            result.activate("caratteristicaRichiesta.ftl", datamodel, request, response);
+            result.activate("caratteristicaRichiesta.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -131,7 +131,7 @@ public class OCaratteristicheRichiestaController extends ApplicationBaseControll
             datamodel.put("caratteristiche", dl.getCaratteristicaDAO().getCaratteristicheRichiesta(richiesta));
             datamodel.put("success", "2");
 
-            result.activate("caratteristicaRichiesta.ftl", datamodel, request, response);
+            result.activate("caratteristicaRichiesta.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

@@ -81,7 +81,6 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
-
     }
 
     private void handleDelete(HttpServletRequest request, HttpServletResponse response, Integer categoriaPadre_key) {

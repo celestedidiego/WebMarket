@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="it">
+    <head>
+        <title>WebMarket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="../style/card.css" type="text/css"/>
+        <link rel="stylesheet" href="../style/card.css" type="text/css">
+
+       
+    </head>
+    <body>
+        
+    <#include "header.ftl.html">
+    
+    <div class="container">
+        
+        <a class="card" href="categoria_padre?page=0">
+            <div class="icon">📕
+                <!--<img class="image-class" src="/images/icons/list-solid-1.png" alt="icona categoria padre">--></div>
+            <div class="separator"></div>
+            <div class="title">Gestione Categoria Padre</div>
+            <div class="text">Inserisci, modifica o cancella una categoria <b>padre</b></div>
+        </a>
+        
+        <a class="card" href="categoria_figlio?page=0">
+            <div class="icon">📙</div>
+            <div class="separator"></div>
+            <div class="title">Gestione Categoria Figlio</div>
+            <div class="text">Inserisci, modifica o cancella una categoria <b>figlio</b></div>
+        </a>
+        
+        <a class="card" href="categoria_nipote?page=0">
+            <div class="icon">📘</div>
+            <div class="separator"></div>
+            <div class="title">Gestione Categoria Nipote</div>
+            <div class="text">Inserisci, modifica o cancella una categoria <b>nipote</b></div>
+        </a>
+        
+        <a class="card" href="gestione_caratteristiche">
+            <div class="icon">🔍</div>
+            <div class="separator"></div>
+            <div class="title">Gestione caratteristiche</div>
+            <div class="text">Inserisci, modifica o cancella le <b>caratteristiche</b></div>
+        </a>
+        
+        <a class="card" href="gestione_ordinanti?page=0">
+            <div class="icon">🧑</div>
+            <div class="separator"></div>
+            <div class="title">Gestione ordinanti</div>
+            <div class="text">Inserisci, modifica o cancella gli <b>ordinanti</b></div>
+        </a>
+        
+        <a class="card" href="gestione_tecnici">
+            <div class="icon">️👷</div>
+            <div class="separator"></div>
+            <div class="title">Gestione tecnici</div>
+            <div class="text">Inserisci, modifica o cancella i <b>tecnici</b></div>
+        </a>
+    </div>
+    
+    <#include "footer.ftl.html">
+    
+    </body>
+</html>

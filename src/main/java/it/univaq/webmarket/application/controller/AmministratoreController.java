@@ -36,7 +36,7 @@ public class AmministratoreController extends ApplicationBaseController {
         TemplateResult result = new TemplateResult(getServletContext());
         Map<String, Object> datamodel = new HashMap<>();
 
-        result.activate("amministratore.ftl", datamodel, request, response);
+        result.activate("amministratore.ftl.html", datamodel, request, response);
     }
 
     @Override
