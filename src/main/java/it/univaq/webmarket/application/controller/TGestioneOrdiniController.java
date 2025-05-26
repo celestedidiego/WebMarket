@@ -59,7 +59,7 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
         }
 
 
-        result.activate("TGestioneOrdini.ftl", datamodel, request, response);
+        result.activate("TGestioneOrdini.ftl.html", datamodel, request, response);
     }
 
 
@@ -87,7 +87,7 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
 
-            result.activate("TGestioneOrdini.ftl", datamodel, request, response);
+            result.activate("TGestioneOrdini.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -116,7 +116,7 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
 
-            result.activate("TGestioneOrdini.ftl", datamodel, request, response);
+            result.activate("TGestioneOrdini.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

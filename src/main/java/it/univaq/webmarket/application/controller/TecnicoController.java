@@ -56,7 +56,7 @@ public class TecnicoController extends ApplicationBaseController {
             datamodel.put("richiestePreseInCarico", richiestePreseInCarico);
             datamodel.put("proposte", proposte);
 
-            result.activate("tecnico.ftl", datamodel, request, response);
+            result.activate("tecnico.ftl.html", datamodel, request, response);
         } catch (DataException e) {
             handleError(e, request, response);
         }

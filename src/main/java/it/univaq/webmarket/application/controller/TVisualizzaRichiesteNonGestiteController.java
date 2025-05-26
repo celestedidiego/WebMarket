@@ -58,7 +58,7 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
             handleError(e, request, response);
         }
 
-        result.activate("prendiInCarico.ftl", datamodel, request, response);
+        result.activate("prendiInCarico.ftl.html", datamodel, request, response);
     }
 
     private void renderCaratteristiche(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException{
@@ -96,7 +96,7 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
                 datamodel.put("richieste", dl.getRichiestaOrdineDAO().getRichiesteNonGestite(0));
             }
 
-            result.activate("prendiInCarico.ftl", datamodel, request, response);
+            result.activate("prendiInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -156,7 +156,7 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
                 datamodel.put("richieste", dl.getRichiestaOrdineDAO().getRichiesteNonGestite(0));
             }
 
-            result.activate("prendiInCarico.ftl", datamodel, request, response);
+            result.activate("prendiInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap');
+
+:root {
+    --width: 350px;
+    --font-size: 1.7rem;
+}
+
+.quote-container {
+    margin-top: 50px;
+    position: relative;
+}
+
+.note {
+    color: #333;
+    position: relative;
+    width: var(--width);
+    min-height: var(--width);
+    margin: 0 auto;
+    padding: 10px 20px 20px;
+    font-family: "Playwrite AU VIC", cursive, serif;
+    font-optical-sizing: auto;
+    font-size: var(--font-size);
+    box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+
+}
+
+.note > * {
+    margin-top: -20px;
+}
+
+.note .author {
+    display: block;
+    margin: 40px 0 0 0;
+    text-align: right;
+
+}
+
+.title-postit {
+    text-align: center;
+}
+
+.yellow {
+    background: #eae672;
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(2deg);
+}
+
+.pink {
+    background: pink;
+    -webkit-transform: rotate(-4deg);
+    -moz-transform: rotate(-4deg);
+    -o-transform: rotate(-4deg);
+    -ms-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+}
+
+.green {
+    background: greenyellow;
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    transform: rotate(3deg);
+}
+
+.pin {
+    background-color: #aaa;
+    display: block;
+    height: 32px;
+    width: 2px;
+    position: absolute;
+    left: 50%;
+    top: -16px;
+    z-index: 1;
+}
+
+.pin:after {
+    background-color: #A31;
+    background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3));
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.1), inset 3px 3px 3px hsla(0,0%,100%,.2), inset -3px -3px 3px hsla(0,0%,0%,.2), 23px 20px 3px hsla(0,0%,0%,.15);
+    content: '';
+    height: 12px;
+    left: -5px;
+    position: absolute;
+    top: -10px;
+    width: 12px;
+}
+
+.pin:before {
+    background-color: hsla(0,0%,0%,0.1);
+    box-shadow: 0 0 .25em hsla(0,0%,0%,.1);
+    content: '';
+
+    height: 24px;
+    width: 2px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+
+    transform: rotate(57.5deg);
+    -moz-transform: rotate(57.5deg);
+    -webkit-transform: rotate(57.5deg);
+    -o-transform: rotate(57.5deg);
+    -ms-transform: rotate(57.5deg);
+
+    transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+}
+
+.container-postit {
+    display: flex;
+    justify-content: center;
+    background-color: bisque;
+    border-radius: 2rem;
+    border: 1rem #f6b066 solid;
+    min-height: 30rem;
+}
+
+.note:focus, .note:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    outline: none;
+}
+
+.note:focus {
+    outline: none;
+}
+
+.divader {
+    width: 100%;
+    border: 1px solid grey;
+    margin-top: 1rem;
+}
+
+a, a:focus, a:hover {
+    text-decoration: none;
+    color: #333;
+}
+div:has(.a-postit) {
+    text-align: center;
+}
+.a-postit {
+    display: block;
+}
+
+.a-postit:hover {
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: .7rem;
+}
+.bacheca, .menu {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.numeric {
+    font-size: calc(var(--font-size) * 0.7);
+    font-weight: bold;
+}

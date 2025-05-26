@@ -54,7 +54,7 @@ public class AGestioneCaratteristicheController extends ApplicationBaseControlle
             handleError(e, request, response);
         }
 
-        result.activate("gestioneCaratteristiche.ftl", datamodel, request, response);
+        result.activate("gestioneCaratteristiche.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer caratteristica_key) throws TemplateManagerException, IOException {
@@ -76,7 +76,7 @@ public class AGestioneCaratteristicheController extends ApplicationBaseControlle
                 datamodel.put("page", 0);
             }
             datamodel.put("visibilityUpdate", "flex");
-            result.activate("gestioneCaratteristiche.ftl", datamodel, request, response);
+            result.activate("gestioneCaratteristiche.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -123,7 +123,7 @@ public class AGestioneCaratteristicheController extends ApplicationBaseControlle
             datamodel.put("success", "1"); //Successo, caratteristica modificata
 
 
-            result.activate("gestioneCaratteristiche.ftl", datamodel, request, response);
+            result.activate("gestioneCaratteristiche.ftl.html", datamodel, request, response);
 
         } catch (DataException ex) {
             handleError(ex, request, response);
@@ -148,7 +148,7 @@ public class AGestioneCaratteristicheController extends ApplicationBaseControlle
             }
             datamodel.put("visibilityInsert", "flex");
 
-            result.activate("gestioneCaratteristiche.ftl", datamodel, request, response);
+            result.activate("gestioneCaratteristiche.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -184,7 +184,7 @@ public class AGestioneCaratteristicheController extends ApplicationBaseControlle
                 datamodel.put("page", 0);
             }
 
-            result.activate("gestione_caratteristiche.ftl", datamodel, request, response);
+            result.activate("gestioneCaratteristiche.ftl.html", datamodel, request, response);
 
 
         } catch (DataException ex) {

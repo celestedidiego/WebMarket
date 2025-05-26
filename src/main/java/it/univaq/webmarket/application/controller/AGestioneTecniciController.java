@@ -52,7 +52,7 @@ public class AGestioneTecniciController extends ApplicationBaseController {
             handleError(e, request, response);
         }
 
-        result.activate("gestioneTecnici.ftl", datamodel, request, response);
+        result.activate("gestioneTecnici.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer tecnico_key) throws TemplateManagerException, IOException {
@@ -72,7 +72,7 @@ public class AGestioneTecniciController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
             datamodel.put("visibilityUpdate", "flex");
-            result.activate("gestioneTecnici.ftl", datamodel, request, response);
+            result.activate("gestioneTecnici.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -118,7 +118,7 @@ public class AGestioneTecniciController extends ApplicationBaseController {
             datamodel.put("success", "1"); // Modifica effettuata con successo
 
 
-            result.activate("gestioneTecnici.ftl", datamodel, request, response);
+            result.activate("gestioneTecnici.ftl.html", datamodel, request, response);
 
         } catch (DataException ex) {
             handleError(ex, request, response);
@@ -141,7 +141,7 @@ public class AGestioneTecniciController extends ApplicationBaseController {
             }
             datamodel.put("visibilityInsert", "flex");
 
-            result.activate("gestioneTecnici.ftl", datamodel, request, response);
+            result.activate("gestioneTecnici.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -176,7 +176,7 @@ public class AGestioneTecniciController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
 
-            result.activate("gestioneTecnici.ftl", datamodel, request, response);
+            result.activate("gestioneTecnici.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

@@ -64,7 +64,7 @@ public class TVisualizzaProposteController extends ApplicationBaseController {
             handleError(e, request, response);
         }
 
-        result.activate("TProposteAcquisto.ftl", datamodel, request, response);
+        result.activate("TProposteAcquisto.ftl.html", datamodel, request, response);
     }
 
 

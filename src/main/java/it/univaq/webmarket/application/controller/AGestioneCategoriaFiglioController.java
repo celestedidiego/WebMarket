@@ -65,7 +65,7 @@ public class AGestioneCategoriaFiglioController extends ApplicationBaseControlle
             }
         }
 
-        result.activate("categoriaFiglio.ftl", datamodel, request, response);
+        result.activate("categoriaFiglio.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer categoriaFiglio_key) throws TemplateManagerException, IOException {
@@ -149,7 +149,7 @@ public class AGestioneCategoriaFiglioController extends ApplicationBaseControlle
 
 
             if (id_categoria_genitore.equals("null")) {
-                result.activate("categoriaFiglio.ftl", datamodel, request, response);
+                result.activate("categoriaFiglio.ftl.html", datamodel, request, response);
             } else {
                 response.sendRedirect("categoria_figlio?id_categoria_genitore=" + id_categoria_genitore + "&showAlert=1");
             }
@@ -180,7 +180,7 @@ public class AGestioneCategoriaFiglioController extends ApplicationBaseControlle
             datamodel.put("categorie", dl.getCategoriaDAO().getAllCategorieFiglio());
             datamodel.put("success", "2"); //inserimento effettuato
 
-            result.activate("categoriaFiglio.ftl", datamodel, request, response);
+            result.activate("categoriaFiglio.ftl.html", datamodel, request, response);
 
         } catch (DataException ex) {
             handleError(ex, request, response);
@@ -197,7 +197,7 @@ public class AGestioneCategoriaFiglioController extends ApplicationBaseControlle
             datamodel.put("categoriePadre", dl.getCategoriaDAO().getAllCategoriePadre());
             datamodel.put("visibilityInsert", "flex");
 
-            result.activate("categoriaFiglio.ftl", datamodel, request, response);
+            result.activate("categoriaFiglio.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
