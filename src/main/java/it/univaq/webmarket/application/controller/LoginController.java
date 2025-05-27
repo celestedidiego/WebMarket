@@ -141,6 +141,6 @@ public class LoginController extends ApplicationBaseController {
         //if (request.getParameter("error") != null) displayError(datamodel, request.getParameter("error"));
 
         datamodel.put("referrer", request.getParameter("referrer"));
-        result.activate("login.ftl", datamodel, request, response);
+        result.activate("login.ftl.html", datamodel, request, response);
     }
 }
