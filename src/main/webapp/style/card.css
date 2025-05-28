@@ -16,7 +16,7 @@ body, html {
 }
 
 .card {
-    flex: 1 1 calc(25% - 2.4rem);
+    flex: 1 1 calc(50% - 2.4rem);
     box-sizing: border-box;
     padding: 20px;
     display: flex;
@@ -60,12 +60,6 @@ body, html {
 
 .text {
     text-align: center;
-}
-
-@media (max-width: 1200px) {
-    .card {
-        flex: 1 1 calc(50% - 40px);
-    }
 }
 
 @media (max-width: 600px) {

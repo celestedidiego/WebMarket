@@ -119,12 +119,21 @@ h1 {
 }
 
 @media (max-width: 600px) {
+    body {
+        display: block;
+        padding: 0;
+        min-height: 0;
+        background-color: var(--white); /* Sfondo bianco su mobile */
+    }
     .container {
-        max-width: 98vw;
+        max-width: 100vw;
         min-width: 0;
-        padding: 10px;
+        width: 100vw;
+        height: auto;
+        margin: 0;
         border-radius: 0;
         box-shadow: none;
+        padding: 10px;
     }
     h1 {
         font-size: 1.5rem;
@@ -132,7 +141,7 @@ h1 {
     .form-check-label {
         font-size: 4vw;
         padding: 8px;
-        margin-bottom: 8px; /* aggiungi spazio tra i radio */
+        margin-bottom: 8px;
     }
     .submit-button {
         width: 100%;
