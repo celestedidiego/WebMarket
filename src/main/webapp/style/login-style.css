@@ -106,3 +106,35 @@ h1 {
     border-color: var(--light-blue);
 }
 
+@media (max-width: 900px) {
+    .container {
+        max-width: 90vw;
+        height: auto;
+        padding: 20px;
+    }
+    .form-check-label {
+        width: 100%;
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 98vw;
+        min-width: 0;
+        padding: 10px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .form-check-label {
+        font-size: 4vw;
+        padding: 8px;
+        margin-bottom: 8px; /* aggiungi spazio tra i radio */
+    }
+    .submit-button {
+        width: 100%;
+    }
+}

@@ -22,27 +22,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     
     <div class="container">
         
-        <a class="card" href="categoria_padre?page=0">
-            <div class="icon">📕
-                <!--<img class="image-class" src="/images/icons/list-solid-1.png" alt="icona categoria padre">--></div>
+        <a class="card" href="#" id="gestione-categoria-card">
+            <div class="icon">📚</div>
             <div class="separator"></div>
-            <div class="title">Gestione Categoria Padre</div>
-            <div class="text">Inserisci, modifica o cancella una categoria <b>padre</b></div>
+            <div class="title">Gestione Categoria</div>
+            <div class="text">Gestisci categorie <b>padre</b>, <b>figlio</b> e <b>nipote</b></div>
         </a>
-        
-        <a class="card" href="categoria_figlio?page=0">
-            <div class="icon">📙</div>
-            <div class="separator"></div>
-            <div class="title">Gestione Categoria Figlio</div>
-            <div class="text">Inserisci, modifica o cancella una categoria <b>figlio</b></div>
-        </a>
-        
-        <a class="card" href="categoria_nipote?page=0">
-            <div class="icon">📘</div>
-            <div class="separator"></div>
-            <div class="title">Gestione Categoria Nipote</div>
-            <div class="text">Inserisci, modifica o cancella una categoria <b>nipote</b></div>
-        </a>
+
+        <!-- Popup nascosto di default -->
+        <div id="categorie-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0008; z-index:2000; align-items:center; justify-content:center;">
+            <div style="background:white; padding:2rem; border-radius:1rem; min-width:250px; display:flex; flex-direction:column; gap:1rem; align-items:center;">
+                <h3>Scegli la categoria</h3>
+                <a class="btn btn-primary" href="categoria_padre?page=0">Categoria Padre</a>
+                <a class="btn btn-primary" href="categoria_figlio?page=0">Categoria Figlio</a>
+                <a class="btn btn-primary" href="categoria_nipote?page=0">Categoria Nipote</a>
+                <button class="btn btn-secondary" id="close-categorie-popup">Chiudi</button>
+            </div>
+        </div>
         
         <a class="card" href="gestione_caratteristiche">
             <div class="icon">🔍</div>
@@ -67,6 +63,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     </div>
     
     <#include "footer.ftl.html">
-    
+
+    <script>
+        document.getElementById('gestione-categoria-card').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('categorie-popup').style.display = 'flex';
+        });
+        document.getElementById('close-categorie-popup').addEventListener('click', function() {
+            document.getElementById('categorie-popup').style.display = 'none';
+        });
+    </script>
+
     </body>
 </html>
