@@ -59,7 +59,7 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
             handleError(e, request, response);
         }
 
-        result.activate("categoriaPadre.ftl", datamodel, request, response);
+        result.activate("categoriaPadre.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer categoriaPadre_key) throws TemplateManagerException, IOException {
