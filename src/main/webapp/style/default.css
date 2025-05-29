@@ -2,7 +2,6 @@
 
 :root {
     --light-blue: rgba(4, 55, 79, 0.8);
-    --light-blue: rgba(4, 55, 79, 0.8);
 }
 
 /* HEADER */
@@ -142,4 +141,19 @@ html {
 .textarea-note {
     resize: none;
     width: 100%;
+}
+
+/* HEADER e FOOTER a tutta larghezza */
+header, .footer {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    max-width: 100vw;
+    border-radius: 0;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
 }

@@ -23,7 +23,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
     <#include "header.ftl.html">
 
     <div class="container">
-        <h1>Gestisci Caratteristiche</h1>
+        <h1>Gestione Caratteristiche</h1>
 
         <div id="aggiungi" class="aggiungi">
             <form method="POST" action="gestione_caratteristiche?page=${page}">
@@ -86,6 +86,76 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </li>
             </ul>
         </nav>
+    </div>
+
+    <div class="popup-container" id="add" style="display: ${visibilityInsert!"none"}">
+        <div class="popup">
+            <div class="update-screen">
+                <div class="titolo-popup">
+                    <h4>Aggiungi Caratteristica</h4>
+                </div>
+                <form method="POST" action="gestione_caratteristiche?page=${page}" class="contenuto-form-popup">
+                    <label for="nome">Inserisci Nome:</label>
+                    <input class="form-control modifica-input" id="nome" name="nome" type="text" required>
+                    <div class="dropdownContainer">
+                        <select name="sceltaNipote" id="sceltaNipote" class="scelta-dropdown" required>
+                            <option class="dropdown-scelta-item" selected
+                                    disabled
+                                    hidden>Seleziona Categoria Nipote
+                            </option>
+                            <#if (nipoti)??>
+                                <#list nipoti as nipote>
+                                    <option class="dropdown-scelta-item"
+                                            value="${nipote.key}">${nipote.nome}</option>
+                                </#list>
+                            </#if>
+                        </select>
+                    </div>
+
+                    <div class="buttons-choose">
+                        <input class="btn btn-primary" type="submit" id="action" name="action" value="Aggiungi">
+                        <a class="btn btn-danger" href="gestione_caratteristiche?page=${page}">Annulla</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-container" id="modify" style="display: ${visibilityUpdate!"none"}">
+        <div class="popup">
+
+            <div class="modify-screen">
+                <div class="titolo-popup">
+                    <h4>Modifica Caratteristica</h4>
+                </div>
+                <form method="POST" action="gestione_caratteristiche?page=${page}" class="contenuto-form-popup">
+                    <label for="nome">Inserisci nuovo Nome:</label>
+                    <label for="id"></label>
+                    <input type="text" id="id" name="id" style="display: none" value="${(caratteristicaModifica.key)!"0"}">
+                    <input class="form-control modifica-input" id="nome" name="nome" type="text"
+                            value="${(caratteristicaModifica.nome)!""}" required>
+                    <div class="dropdownContainer">
+                        <select name="sceltaNipote" id="sceltaNipote" class="scelta-dropdown" required>
+                            <option class="dropdown-scelta-item" value="${(caratteristicaModifica.categoriaNipote.key)!"0"}"
+                                    selected
+                                    disabled
+                                    hidden>${(caratteristicaModifica.categoriaNipote.nome)!"Seleziona Ufficio"}</option>
+                            <#if (nipoti)??>
+                                <#list nipoti as nipote>
+                                    <option class="dropdown-scelta-item"
+                                            value="${nipote.key}">${nipote.nome}</option>
+                                </#list>
+                            </#if>
+                        </select>
+                    </div>
+                    <div class="buttons-choose">
+                        <input class="btn btn-primary" type="submit" id="action" name="action" value="Modifica">
+                        <a class="btn btn-danger" href="gestione_caratteristiche?page=${page}">Annulla</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
 
     <span class="invisible" id="success">${success!"0"}</span>

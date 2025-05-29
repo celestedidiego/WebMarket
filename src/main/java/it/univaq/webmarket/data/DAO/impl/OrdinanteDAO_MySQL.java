@@ -46,9 +46,9 @@ public class OrdinanteDAO_MySQL extends DAO implements OrdinanteDAO {
             super.init();
             sOrdinanteByID = connection.prepareStatement("SELECT * FROM ordinante WHERE ID=?");
             sOrdinanteByEmail = connection.prepareStatement("SELECT * FROM ordinante WHERE email=?");
-            iOrdinante = connection.prepareStatement("INSERT INTO ordinante(email, password, ID_ufficio) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            iOrdinante = connection.prepareStatement("INSERT INTO ordinante(email, password) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
             sOrdinanti = connection.prepareStatement("SELECT ID FROM ordinante LIMIT ?, ?");
-            uOrdinante = connection.prepareStatement("UPDATE ordinante SET email=?, password=?, ID_ufficio=?, version=? WHERE ID=? AND version=?");
+            uOrdinante = connection.prepareStatement("UPDATE ordinante SET email=?, password=?, version=? WHERE ID=? AND version=?");
             dOrdinante = connection.prepareStatement("DELETE FROM ordinante WHERE ID=?");
         } catch (SQLException ex) {
             throw new DataException("Error initializing webmarket data layer", ex);

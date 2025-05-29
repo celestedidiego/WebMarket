@@ -78,6 +78,7 @@ public class TecnicoDAO_MySQL extends DAO implements TecnicoDAO {
     private TecnicoProxy createTecnico(ResultSet rs) throws DataException {
         try {
             TecnicoProxy t = (TecnicoProxy) createTecnico();
+            t.setKey(rs.getInt("ID"));
             t.setEmail(rs.getString("email"));
             t.setPassword(rs.getString("password"));
             t.setVersion(rs.getLong("version"));

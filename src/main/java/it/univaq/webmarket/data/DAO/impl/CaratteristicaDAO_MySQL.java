@@ -47,7 +47,7 @@ public class CaratteristicaDAO_MySQL extends DAO implements CaratteristicaDAO {
     public void init() throws DataException {
         try {
             super.init();
-            iCaratteristica = connection.prepareStatement("INSERT INTO caratteristica(nome, categoriaNipoteID) VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            iCaratteristica = connection.prepareStatement("INSERT INTO caratteristica(nome, categoriaNipoteID) VALUES (?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
             sCaratteristicaByID = connection.prepareStatement("SELECT * FROM caratteristica WHERE ID=?");
             sAllCaratteristiche = connection.prepareStatement("SELECT ID FROM caratteristica LIMIT ?, ?");
             uCaratteristica = connection.prepareStatement("UPDATE caratteristica SET nome=?, categoriaNipoteID=?, version=? WHERE ID=? AND version=?");
