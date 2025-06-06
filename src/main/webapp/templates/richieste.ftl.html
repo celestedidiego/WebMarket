@@ -18,7 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
     <#include "header.ftl.html">
 
-    <div class="container">
+    <div class="richieste-container">
         <h1>Richieste</h1>
 
         <div class="row">
@@ -30,7 +30,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <th scope="col" class="data-column left">Data</th>
                     <th scope="col">Caratteristiche</th>
                     <th scope="col">Modifica</th>
-                    <th scope="col">Elimina</th>
                 </tr>
                 </thead>
                 <tbody id="tbody">
@@ -51,38 +50,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <input class="btn btn-primary" type="submit" id="render" name="render" value="Modifica">
                             </form>
                         </td>
-                        <td>
-                            <form method="POST" action="richieste?page=${page!"0"}">
-                                <input type="hidden" name="id" value="${richiesta.key}">
-                                <input class="btn btn-danger" type="submit" id="action" name="action" value="Elimina">
-                            </form>
-                        </td>
                     </tr>
                 </#list>
                 </tbody>
             </table>
         </div>
+    </div>
 
+    <div class="footer-pagination">
         <#if page?? >
             <div class="paginazione">
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination">
+                    <ul class="pagination justify-content-center">
                         <#if page == 0>
                             <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
                         <#else>
-                            <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page-1}">Pagina
-                                    precedente</a>
-                            </li>
+                            <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page-1}">Pagina precedente</a></li>
                         </#if>
-                        <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page+1}">Pagina
-                                successiva</a>
-                        </li>
+                        <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page+1}">Pagina successiva</a></li>
                     </ul>
                 </nav>
             </div>
         </#if>
     </div>
-
+    
     <div class="popup-container" id="add" style="display: ${visibilityModify!"none"}">
         <div class="popup">
 

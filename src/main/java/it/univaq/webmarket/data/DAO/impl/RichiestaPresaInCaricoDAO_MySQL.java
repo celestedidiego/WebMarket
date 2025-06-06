@@ -5,6 +5,7 @@
 
 package it.univaq.webmarket.data.DAO.impl;
 
+import it.univaq.webmarket.application.WebmarketDataLayer;
 import it.univaq.webmarket.data.DAO.RichiestaPresaInCaricoDAO;
 import it.univaq.webmarket.data.model.RichiestaPresaInCarico;
 import it.univaq.webmarket.data.model.Tecnico;
@@ -99,6 +100,10 @@ public class RichiestaPresaInCaricoDAO_MySQL extends DAO implements RichiestaPre
             rpic.setRichiestaOrdine_key(rs.getInt("richiestaOrdineID"));
             rpic.setTecnico_key(rs.getInt("tecnicoID"));
             rpic.setVersion(rs.getLong("version"));
+            // Carica e setta la richiesta ordine
+            rpic.setRichiestaOrdine(
+                ((WebmarketDataLayer) getDataLayer()).getRichiestaOrdineDAO().getRichiestaOrdine(rs.getInt("richiestaOrdineID"))
+            );
             return rpic;
         } catch (SQLException ex) {
             throw new DataException("Unable to create RichiestaPresaInCarico object form ResultSet", ex);

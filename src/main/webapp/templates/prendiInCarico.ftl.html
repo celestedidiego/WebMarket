@@ -74,43 +74,44 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </tbody>
             </table>
         </div>
-
-        <#if page??>
-            <div class="paginazione">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <#if page == 0>
-                            <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
-                        <#else>
-                            <li class="page-item">
-                                <a class="btn btn-primary" href="prendi_in_consegna?page=${page-1}">Pagina precedente</a>
-                            </li>
-                        </#if>
-                        <li class="page-item">
-                            <a class="btn btn-primary" href="prendi_in_consegna?page=${page+1}">Pagina successiva</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </#if>
     </div>
+
+    <#if page??>
+        <div class="paginazione">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <#if page == 0>
+                        <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
+                    <#else>
+                        <li class="page-item">
+                            <a class="btn btn-primary" href="prendi_in_consegna?page=${page-1}">Pagina precedente</a>
+                        </li>
+                    </#if>
+                    <li class="page-item">
+                        <a class="btn btn-primary" href="prendi_in_consegna?page=${page+1}">Pagina successiva</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </#if>
 
     <div class="popup-container" id="add" style="display: ${visibilityModify!"none"}">
         <div class="popup">
 
             <div class="update-screen">
                 <div class="titolo-popup">
-                    <div><h4>Caratteristiche</h4></div>
-                    <#if caratteristiche??>
-                        <p>Categoria: ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.nome}</p>
-                    </#if>
+                    <div>
+                        <h4>Caratteristiche</h4>
+                        <#if caratteristiche??>
+                            <p>Categoria: ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.nome}</p>
+                        </#if>
+                    </div>
                 </div>
                 <table class="table">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="left">Nome</th>
                         <th scope="col" class="left">Valore</th>
-                        <th scope="col" class="data-column left">Unità di Misura</th>
                     </tr>
                     </thead>
                     <tbody id="tbody">

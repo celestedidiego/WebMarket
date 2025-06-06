@@ -130,7 +130,7 @@
     <servlet>
         <servlet-name>proposte_tecnico</servlet-name>
         <servlet-class>
-            it.univaq.webmarket.application.controller.TVisualizzaProposteTecnicoController
+            it.univaq.webmarket.application.controller.TVisualizzaProposteController
         </servlet-class>
     </servlet>
     <servlet>

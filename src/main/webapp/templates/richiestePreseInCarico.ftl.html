@@ -42,9 +42,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <tbody id="tbody">
                 <#list richiestePreseInCarico as richiestaPresaInCarico>
                     <tr>
-                        <td class="left">${richiestaPresaInCarico.richiesta.codiceRichiesta}</td>
-                        <td class="left fixed-width">${richiestaPresaInCarico.richiesta.note}</td>
-                        <td class="data-column left">${richiestaPresaInCarico.richiesta.data}</td>
+                        <td class="left">${richiestaPresaInCarico.richiestaOrdine.codiceRichiesta}</td>
+                        <td class="left fixed-width">${richiestaPresaInCarico.richiestaOrdine.note}</td>
+                        <td class="data-column left">${richiestaPresaInCarico.richiestaOrdine.data}</td>
                         <td>
                             <#if id??>
                                 <form method="POST" action="richieste_prese_in_carico?id=${id}">
@@ -79,22 +79,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </tbody>
             </table>
         </div>
+    </div>
 
-        <#if page??>
+    <div class="footer-pagination">
+        <#if page?? >
             <div class="paginazione">
                 <nav aria-label="Page navigation example">
-                    <ul class="pagination">
+                    <ul class="pagination justify-content-center">
                         <#if page == 0>
                             <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
                         <#else>
-                            <li class="page-item">
-                                <a class="btn btn-primary" href="richieste_prese_in_carico?page=${page-1}">Pagina
-                                    precedente</a>
-                            </li>
+                            <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page-1}">Pagina precedente</a></li>
                         </#if>
-                        <li class="page-item">
-                            <a class="btn btn-primary" href="richieste_prese_in_carico?page=${page+1}">Pagina successiva</a>
-                        </li>
+                        <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page+1}">Pagina successiva</a></li>
                     </ul>
                 </nav>
             </div>
@@ -106,10 +103,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <div class="update-screen">
                 <div class="titolo-popup">
-                    <div><h4>Caratteristiche</h4></div>
-                    <#if caratteristiche??>
-                        <p>Categoria: ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.nome}</p>
-                    </#if>
+                    <div>
+                        <h4>Caratteristiche</h4>
+                        <#if caratteristiche??>
+                            <p>Categoria: ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.categoriaGenitore.nome} > ${caratteristiche[0].caratteristica.categoriaNipote.nome}</p>
+                        </#if>
+                    </div>
                 </div>
                 <table class="table">
                     <thead class="thead-dark">
@@ -124,7 +123,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <tr>
                                 <td class="left">${caratteristicaRichiesta.caratteristica.nome!""}</td>
                                 <td>${caratteristicaRichiesta.valore!""}</td>
-                                <td>${caratteristicaRichiesta.caratteristica.unitaMisura!""}</td>
                             </tr>
                         </#list>
                     </#if>

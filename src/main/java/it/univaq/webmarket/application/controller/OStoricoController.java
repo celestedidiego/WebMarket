@@ -68,7 +68,7 @@ public class OStoricoController extends ApplicationBaseController {
                 handleError(e, request, response);
             }
 
-            result.activate("storico.ftl", datamodel, request, response);
+            result.activate("storico.ftl.html", datamodel, request, response);
         } catch (TemplateManagerException e) {
             handleError(e, request, response);
         }
@@ -112,7 +112,7 @@ public class OStoricoController extends ApplicationBaseController {
                 datamodel.put("ordini", dl.getOrdineDAO().getStorico(ordinante, 0));
             }
 
-            result.activate("storico.ftl", datamodel, request, response);
+            result.activate("storico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -172,7 +172,7 @@ public class OStoricoController extends ApplicationBaseController {
                 datamodel.put("risposte", List.of(Ordine.Risposta.ACCETTATO, Ordine.Risposta.RESPINTO, Ordine.Risposta.RIFIUTATO));
             }
 
-            result.activate("storico.ftl", datamodel, request, response);
+            result.activate("storico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

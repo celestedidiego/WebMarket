@@ -66,7 +66,7 @@ public class OVisualizzaProposteController extends ApplicationBaseController {
                 handleError(e, request, response);
             }
 
-            result.activate("proposte.ftl", datamodel, request, response);
+            result.activate("proposteAcquisto.ftl.html", datamodel, request, response);
         } catch (TemplateManagerException e){
             handleError(e, request, response);
         }
@@ -107,7 +107,7 @@ public class OVisualizzaProposteController extends ApplicationBaseController {
                 datamodel.put("proposte", dl.getPropostaAcquistoDAO().getAllProposteDaDecidereByOrdinante(ordinante, 0));
             }
 
-            result.activate("proposte.ftl", datamodel, request, response);
+            result.activate("proposteAcquisto.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -164,7 +164,7 @@ public class OVisualizzaProposteController extends ApplicationBaseController {
                 datamodel.put("proposte", dl.getPropostaAcquistoDAO().getAllProposteDaDecidereByOrdinante(ordinante, 0));
             }
 
-            result.activate("proposte.ftl", datamodel, request, response);
+            result.activate("proposteAcquisto.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -218,7 +218,7 @@ public class OVisualizzaProposteController extends ApplicationBaseController {
                 datamodel.put("proposte", dl.getPropostaAcquistoDAO().getAllProposteDaDecidereByOrdinante(ordinante, 0));
             }
 
-            result.activate("proposte.ftl", datamodel, request, response);
+            result.activate("proposteAcquisto.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

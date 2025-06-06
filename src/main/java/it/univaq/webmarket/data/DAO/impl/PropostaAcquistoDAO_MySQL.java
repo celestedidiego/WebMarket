@@ -51,21 +51,21 @@ public class PropostaAcquistoDAO_MySQL extends DAO implements PropostaAcquistoDA
     public void init() throws DataException {
         try {
             super.init();
-            sPropostaAcquistoByID = connection.prepareStatement("SELECT * FROM propostaAcquisto WHERE ID=?");
-            sProposteByRichiestaPresaInCarico = connection.prepareStatement("SELECT ID FROM propostaAcquisto WHERE richiestaPresaInCaricoID = ?");
-            sProposteByTecnico = connection.prepareStatement("SELECT p.ID FROM propostaAcquisto p JOIN richiestapresaincarico r ON p.richiestaPresaInCaricoID = r.ID WHERE r.tecnicoID = ? LIMIT ?, ?");
+            sPropostaAcquistoByID = connection.prepareStatement("SELECT * FROM propostaacquisto WHERE ID=?");
+            sProposteByRichiestaPresaInCarico = connection.prepareStatement("SELECT ID FROM propostaacquisto WHERE richiestaPresaInCaricoID = ?");
+            sProposteByTecnico = connection.prepareStatement("SELECT p.ID FROM propostaacquisto p JOIN richiestapresaincarico r ON p.richiestaPresaInCaricoID = r.ID WHERE r.tecnicoID = ? LIMIT ?, ?");
             sProposteAccettate = connection.prepareStatement(
                     "SELECT p.ID " +
-                    "FROM PropostaAcquisto p " +
+                    "FROM propostaacquisto p " +
                     "LEFT JOIN Ordine o ON p.ID = o.propostaAcquistoID " +
                     "WHERE p.stato_proposta = 'Accettato' AND o.ID IS NULL " +
                     "LIMIT ?, ?;");
             sProposteDaDecidereByOrdinante = connection.prepareStatement(
-                    "SELECT p.ID FROM propostaAcquisto p " +
+                    "SELECT p.ID FROM propostaacquisto p " +
                     "JOIN richiestapresaincarico rp ON p.richiestaPresaInCaricoID = rp.ID " +
-                    "JOIN richiesta r ON rp.richiestaOrdine=r.ID " +
-                    "WHERE ID_ordinante = ? AND p.stato_proposta = 'In attesa' LIMIT ?, ?");
-            iPropostaAcquisto = connection.prepareStatement("INSERT INTO proposta(" +
+                    "JOIN richiestaordine r ON rp.richiestaOrdineID=r.ID " +
+                    "WHERE ordinanteID = ? AND p.stato_proposta = 'In attesa' LIMIT ?, ?");
+            iPropostaAcquisto = connection.prepareStatement("INSERT INTO propostaacquisto(" +
                     "codice_prodotto, " +
                     "produttore, " +
                     "note, " +
@@ -75,9 +75,10 @@ public class PropostaAcquistoDAO_MySQL extends DAO implements PropostaAcquistoDA
                     "stato_proposta," +
                     "richiestaPresaInCaricoID)" +
                     " VALUES(?, ?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-            dPropostaAcquisto = connection.prepareStatement("DELETE FROM propostaAcquisto WHERE ID=?");
-            uPropostaAcquisto = connection.prepareStatement("UPDATE propostaAcquisto SET codice_prodotto=?, produttore=?, note=?, prezzo=?, nome_prodotto=?, URL=?, stato_proposta=?, motivazione=?, richiestaPresaInCaricoID=?, version=? WHERE ID=? AND version=?");
-            checkCodiceProposta = connection.prepareStatement("SELECT 1 FROM PropostaAcquisto WHERE codice_prodotto = ?");
+            dPropostaAcquisto = connection.prepareStatement("DELETE FROM propostaacquisto WHERE ID=?");
+            uPropostaAcquisto = connection.prepareStatement("UPDATE propostaacquisto SET codice_prodotto=?, produttore=?, note=?, prezzo=?, nome_prodotto=?, URL=?, stato_proposta=?, motivazione=?, richiestaPresaInCaricoID=?, version=? WHERE ID=? AND version=?");
+            checkCodiceProposta = connection.prepareStatement("SELECT 1 FROM propostaacquisto WHERE codice_prodotto = ?");
+            
         } catch (SQLException ex) {
             throw new DataException("Error initializing webmarket data layer", ex);
         }

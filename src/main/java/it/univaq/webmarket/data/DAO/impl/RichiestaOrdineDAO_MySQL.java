@@ -47,7 +47,7 @@ public class RichiestaOrdineDAO_MySQL extends DAO implements RichiestaOrdineDAO 
             dRichiestaOrdine = connection.prepareStatement("DELETE FROM richiestaOrdine WHERE ID=?");
             sRichiestaByID = connection.prepareStatement("SELECT * FROM richiestaOrdine WHERE ID=? ORDER BY data DESC");
             sRichiesteByIDOrdinantePage = connection.prepareStatement("SELECT ID FROM richiestaOrdine WHERE OrdineID=? ORDER BY data DESC LIMIT ?,?");
-            sRichiesteNonGestite = connection.prepareStatement("SELECT r.ID FROM richiestaOrdine r LEFT JOIN richiestapresaincarico rp ON r.ID = rp.richiestaAcquistoID  WHERE rp.richiestaAcquistoID IS NULL ORDER BY r.data LIMIT ?, ?");
+            sRichiesteNonGestite = connection.prepareStatement("SELECT r.ID FROM richiestaOrdine r LEFT JOIN richiestapresaincarico rp ON r.ID = rp.richiestaOrdineID  WHERE rp.richiestaOrdineID IS NULL ORDER BY r.data LIMIT ?, ?");
             checkCodiceRichiesta = connection.prepareStatement("SELECT 1 FROM RichiestaOrdine WHERE codice_richiesta = ?");
         } catch (SQLException ex) {
             throw new DataException("Error initializing webmarket data layer", ex);

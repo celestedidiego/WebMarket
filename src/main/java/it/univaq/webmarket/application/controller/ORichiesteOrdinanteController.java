@@ -68,7 +68,7 @@ public class ORichiesteOrdinanteController extends ApplicationBaseController {
                 handleError(e, request, response);
             }
 
-            result.activate("richieste.ftl", datamodel, request, response);
+            result.activate("richieste.ftl.html", datamodel, request, response);
         } catch (TemplateManagerException e){
             handleError(e, request, response);
         }
@@ -91,7 +91,7 @@ public class ORichiesteOrdinanteController extends ApplicationBaseController {
             datamodel.put("richiestaDaModificare", richiesta);
             datamodel.put("page", page);
 
-            result.activate("richieste.ftl", datamodel, request, response);
+            result.activate("richieste.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -123,7 +123,7 @@ public class ORichiesteOrdinanteController extends ApplicationBaseController {
             datamodel.put("richieste", dl.getRichiestaOrdineDAO().getRichiesteByOrdinante(richiesta.getOrdinante(), page));
             datamodel.put("page", page);
 
-            result.activate("richieste.ftl", datamodel, request, response);
+            result.activate("richieste.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -148,7 +148,7 @@ public class ORichiesteOrdinanteController extends ApplicationBaseController {
             datamodel.put("richieste", dl.getRichiestaOrdineDAO().getRichiesteByOrdinante(ordinante, page));
             datamodel.put("page", page);
 
-            result.activate("richieste.ftl", datamodel, request, response);
+            result.activate("richieste.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

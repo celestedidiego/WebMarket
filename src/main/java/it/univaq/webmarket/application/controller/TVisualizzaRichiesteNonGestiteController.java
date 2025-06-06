@@ -55,7 +55,9 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
                 datamodel.put("page", 0);
             }
         } catch (DataException e) {
+            datamodel.put("richieste", List.of());
             handleError(e, request, response);
+            return; // Interrompe l'esecuzione per evitare doppia risposta
         }
 
         result.activate("prendiInCarico.ftl.html", datamodel, request, response);
@@ -99,6 +101,7 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
             result.activate("prendiInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
+            return;
         }
     }
 
@@ -159,6 +162,7 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
             result.activate("prendiInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
+            return;
         }
     }
 
@@ -185,6 +189,7 @@ public class TVisualizzaRichiesteNonGestiteController extends ApplicationBaseCon
             }
         } catch (TemplateManagerException ex) {
             handleError(ex, request, response);
+            return;
         }
     }
 }
