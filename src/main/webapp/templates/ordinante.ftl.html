@@ -21,53 +21,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
     <#include "header.ftl.html">
 
-    <h1 class="d-flex justify-content-center bacheca">Bacheca</h1>
-
-    <div class="container-postit">
-        <div class="quote-container">
-            <i class="pin"></i>
-            <blockquote class="note yellow">
-                <h2>Richieste</h2>
-                <div>
-                    <#list richieste as richiesta>
-                        <a class="a-postit" href="richieste?id=${richiesta.key}">Richiesta
-                            <span class="numeric">${richiesta.codiceRichiesta}</span>
-                        </a>
-                    </#list>
-                </div>
-            </blockquote>
-          </div>
-
-          <div class="quote-container">
-            <i class="pin"></i>
-            <blockquote class="note pink">
-                <h2>Proposte</h2>
-                <div>
-                    <#list proposte as proposta>
-                        <a class="a-postit" href="proposte?id=${proposta.key}">Proposta per richiesta
-                                <span class="numeric">${proposta.richiestaPresaInCarico.richiesta.codiceRichiesta}</span>
-                        </a>
-                    </#list>
-                </div>
-            </blockquote>
-          </div>
-
-          <div class="quote-container">
-            <i class="pin"></i>
-            <blockquote class="note green">
-                <h2>Ordini</h2>
-                <div>
-                    <#list ordini as ordine>
-                        <a class="a-postit" href="ordini?id=${ordine.key}">Ordine per richiesta
-                                <span class="numeric">${ordine.proposta.richiestaPresaInCarico.richiesta.codiceRichiesta}</span>
-                        </a>
-                    </#list>
-                </div>
-            </blockquote>
-          </div>
-
-    </div>
-
     <h1 class="d-flex justify-content-center menu">Menu Ordinante</h1>
 
     <div class="container">

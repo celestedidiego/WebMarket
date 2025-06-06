@@ -54,11 +54,11 @@ public class CaratteristicaDAO_MySQL extends DAO implements CaratteristicaDAO {
             dCaratteristica = connection.prepareStatement("DELETE FROM caratteristica WHERE ID=?");
             sCaratteristicheByCategoriaNipote = connection.prepareStatement("SELECT * FROM caratteristica WHERE categoriaNipoteID = ?");
 
-            sCaratteristicaRichiestaByID = connection.prepareStatement("SELECT * FROM composta WHERE ID=?");
-            sCaratteristicheRichiesta = connection.prepareStatement("SELECT * FROM composta WHERE richiestaOrdineID = ?");
-            iCaratteristicaRichiesta = connection.prepareStatement("INSERT INTO composta(caratteristicaID, richiestaOrdineID, valore) VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            uCaratteristicaRichiesta = connection.prepareStatement("UPDATE composta SET caratteristicaID=?, richiestaOrdineID=?, valore=?, version=? WHERE ID=? AND version=?");
-            dCaratteristicaRichiesta = connection.prepareStatement("DELETE FROM composta WHERE ID=?");
+            sCaratteristicaRichiestaByID = connection.prepareStatement("SELECT * FROM caratteristicaRichiesta WHERE ID=?");
+            sCaratteristicheRichiesta = connection.prepareStatement("SELECT * FROM caratteristicaRichiesta WHERE richiestaOrdineID = ?");
+            iCaratteristicaRichiesta = connection.prepareStatement("INSERT INTO caratteristicaRichiesta(caratteristicaID, richiestaOrdineID, valore) VALUES (?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            uCaratteristicaRichiesta = connection.prepareStatement("UPDATE caratteristicaRichiesta SET caratteristicaID=?, richiestaOrdineID=?, valore=?, version=? WHERE ID=? AND version=?");
+            dCaratteristicaRichiesta = connection.prepareStatement("DELETE FROM caratteristicaRichiesta WHERE ID=?");
         } catch (SQLException ex) {
             throw new DataException("Errore inizializzazione data layer", ex);
         }

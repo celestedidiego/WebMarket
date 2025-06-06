@@ -20,53 +20,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
 <#include "header.ftl.html">
 
-<h1 class="d-flex justify-content-center bacheca">Bacheca Tecnico</h1>
-
-<div class="container-postit">
-    <div class="quote-container">
-        <i class="pin"></i>
-        <blockquote class="note yellow">
-            <h2 class="title-postit">Richieste non gestite</h2>
-            <div>
-                <#list richieste as richiesta>
-                    <a class="a-postit" href="prendi_in_consegna?id=${richiesta.key}">Richiesta
-                        <span class="numeric">${richiesta.codiceRichiesta}</span>
-                    </a>
-                </#list>
-            </div>
-        </blockquote>
-    </div>
-
-    <div class="quote-container">
-        <i class="pin"></i>
-        <blockquote class="note pink">
-            <h2 class="title-postit">Richieste prese in carico</h2>
-            <div>
-                <#list richiestePreseInCarico as richiestaPresaIncarico>
-                    <a class="a-postit" href="richieste_prese_in_carico?id=${richiestaPresaIncarico.key}">Richiesta presa in carico:
-                        <span class="numeric">${richiestaPresaIncarico.richiesta.codiceRichiesta}</span>
-                    </a>
-                </#list>
-            </div>
-        </blockquote>
-    </div>
-
-    <div class="quote-container">
-        <i class="pin"></i>
-        <blockquote class="note green">
-            <h2 class="title-postit">Tue Proposte</h2>
-            <div>
-                <#list proposte as proposta>
-                    <a class="a-postit" href="proposte_tecnico?id_richiesta_presa_in_carico=${proposta.richiestaPresaInCarico.key}">
-                        Proposte per Richiesta
-                        <span class="numeric">${proposta.richiestaPresaInCarico.richiesta.codiceRichiesta}</span>
-                    </a>
-                </#list>
-            </div>
-        </blockquote>
-    </div>
-</div>
-
 <h1 class="d-flex justify-content-center menu">Menu Tecnico</h1>
 
 <div class="container">

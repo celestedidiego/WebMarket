@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html lang="it">
     <head>
         <title>WebMarket</title>
@@ -15,22 +11,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <link rel="stylesheet" href="/WebMarket/style/default.css">
         <link rel="stylesheet" href="/WebMarket/style/table.css">
-        <link rel="stylesheet" href="/WebMarket/style/creaRichiesta.css">
+        <link rel="stylesheet" href="/WebMarket/style/crea-richiesta.css">
     </head>
     <body>
         <#include "header.ftl.html">
-        <!--Le note le deve mettere alla fine-->
-        <!--Il codice richiesta è generato dal sistemq-->
-        <!--La data lo aggiunge comunque il sistema-->
-        <!--L'ordinante sta salvato in sessione-->
-        <!--Bisogna solo scegliere le caratteristiche con valore  e poi le note
-        -->
         <div class="container">
             <div id="left-content" class="left-content">
                 <div id="categoriePadreSelect" class="d-flex flex-column mb-2">
                     <label for="sceltaCategoriaPadre">Categoria Padre:</label>
-                    <select name="sceltaCategoriaPadre" id="sceltaCategoriaPadre" class="form-select select-size"
-                            aria-label="Select per categoria padre">
+                    <select name="sceltaCategoriaPadre" id="sceltaCategoriaPadre" class="form-select select-size" aria-label="Select per categoria padre" required>
                         <option value="0" selected>Seleziona Categoria Padre</option>
                         <#list categoriePadre as categoriaPadre>
                             <option value="${(categoriaPadre.key)}">
@@ -42,27 +31,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
                 <div id="categorieFiglioSelect" class="d-flex flex-column invisible mb-2">
                     <label for="sceltaCategoriaFiglio">Categoria Figlio:</label>
-                    <select name="sceltaCategoriaFiglio" id="sceltaCategoriaFiglio" class="form-select select-size"
-                            aria-label="Select per categoria figlio">
+                    <select name="sceltaCategoriaFiglio" id="sceltaCategoriaFiglio" class="form-select select-size" aria-label="Select per categoria figlio" required>
                     </select>
                 </div>
 
                 <div id="categorieNipoteSelect" class="d-flex flex-column invisible mb-2">
                     <label for="sceltaCategoriaNipote">Categoria Nipote:</label>
-                    <select name="sceltaCategoriaNipote" id="sceltaCategoriaNipote" class="form-select select-size"
-                            aria-label="Select per categoria nipote">
+                    <select name="sceltaCategoriaNipote" id="sceltaCategoriaNipote" class="form-select select-size" aria-label="Select per categoria nipote" required>
                     </select>
                 </div>
             </div>
 
             <div id="right-content" class="right-content invisible">
-                <form action="crea_richiesta" method="POST">
+                <form id="creaRichiestaForm" action="/WebMarket/crea_richiesta" method="POST">
                     <div id="caratteristiche-item"></div>
-
                     <div class="d-flex align-items-center flex-column">
                         <label>
                             <textarea class="textarea-note form-control" name="note" rows="4" cols="50"
-                                      placeholder="Inserisci note..."></textarea>
+                                      placeholder="Inserisci note..." required></textarea>
                         </label>
                         <input class="btn btn-primary button-submit" type="submit" value="Crea Richiesta">
                     </div>
@@ -75,6 +61,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script type="module" src="/WebMarket/scripts/crea_richiesta.js"></script>
-        
     </body>
 </html>

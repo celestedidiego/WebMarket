@@ -98,21 +98,34 @@ public class OCreaRichiestaController extends ApplicationBaseController {
                 RichiestaOrdine richiesta = dl.getRichiestaOrdineDAO().createRichiestaOrdine();
                 richiesta.setData(LocalDate.now());
 
-                // POtrebbe essere null ma viene gestito dal DAO
-                richiesta.setNote(parameterMap.get("note")[0]);
+                String[] noteArr = parameterMap.get("note");
+                if (noteArr == null || noteArr.length == 0) {
+                    richiesta.setNote("");
+                } else {
+                    richiesta.setNote(noteArr[0]);
+                }
 
                 HttpSession session = SecurityHelpers.checkSession(request);
+                if (session == null || session.getAttribute("email") == null) {
+                    throw new DataException("Sessione scaduta o email non trovata");
+                }
                 Ordinante ordinante = dl.getOrdinanteDAO()
                         .getOrdinanteByEmail((String) session.getAttribute("email"));
+                if (ordinante == null) {
+                    throw new DataException("Ordinante non trovato");
+                }
                 richiesta.setOrdinante(ordinante);
 
                 dl.getRichiestaOrdineDAO().storeRichiestaOrdine(richiesta);
                 int richiestaID = richiesta.getKey();
 
                 String[] keys = parameterMap.get("key");
+                if (keys == null) {
+                    throw new DataException("Nessuna caratteristica selezionata");
+                }
 
                 for(String key : keys) {
-                    if(!"".equals(parameterMap.get(key)[0])){
+                    if(parameterMap.get(key) != null && !"".equals(parameterMap.get(key)[0])){
                         CaratteristicaRichiesta caratteristicaRichiesta = dl.getCaratteristicaDAO().createCaratteristicaRichiesta();
                         Caratteristica caratteristica = dl.getCaratteristicaDAO()
                                 .getCaratteristica(Integer.parseInt(key));
@@ -126,6 +139,7 @@ public class OCreaRichiestaController extends ApplicationBaseController {
                 sender.sendPDFWithEmail(getServletContext(), ordinante.getEmail(), richiesta, EmailSender.Event.RICHIESTA_REGISTRATA);
 
                 response.sendRedirect("ordinante");
+
             } else {
                 renderTemplate(request, response);
             }
