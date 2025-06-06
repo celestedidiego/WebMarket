@@ -26,7 +26,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <div class="row">
             <table class="table">
-                <thead class="thead-dark">
+                <thead>
                 <tr>
                     <th scope="col">Stato Consegna</th>
                     <th scope="col">Prodotto</th>
@@ -39,41 +39,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <tr>
                         <#if ordine.statoConsegna == "Presa in carico">
                             <td class="left">📥 ${ordine.statoConsegna!""}</td>
-                        <#elseif ordine.statoConsegna == "Presa in carico">
+                        <#elseif ordine.statoConsegna == "in consegna">
                             <td class="left">🚚 ${ordine.statoConsegna!""}</td>
                         <#else>
                             <td class="left">📦 ${ordine.statoConsegna!""}</td>
                         </#if>
-                        <td class="left">${ordine.proposta.nomeProdotto!""}</td>
-                        <td class="left">${ordine.proposta.richiestaPresaInCarico.richiesta.note!""}</td>
+                        <td class="left">${ordine.propostaAcquisto.nomeProdotto!""}</td>
+                        <td class="left">${ordine.propostaAcquisto.richiestaPresaInCarico.richiestaOrdine.note!""}</td>
                         <td><a class="btn btn-primary"
-                               href="caratteristiche?id_richiesta=${ordine.proposta.richiestaPresaInCarico.richiesta.key}">Caratteristiche</a>
+                               href="caratteristiche?id_richiesta=${ordine.propostaAcquisto.richiestaPresaInCarico.richiestaOrdine.key}">Caratteristiche</a>
                         </td>
                     </tr>
                 </#list>
                 </tbody>
             </table>
         </div>
-
-        <#if page?? >
-            <div class="paginazione">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <#if page == 0>
-                            <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
-                        <#else>
-                            <li class="page-item"><a class="btn btn-primary" href="ordini?page=${page-1}">Pagina
-                                    precedente</a>
-                            </li>
-                        </#if>
-                        <li class="page-item"><a class="btn btn-primary" href="ordini?page=${page+1}">Pagina
-                                successiva</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </#if>
     </div>
+
+    <#if page?? >
+        <div class="paginazione">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <#if page == 0>
+                        <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
+                    <#else>
+                        <li class="page-item"><a class="btn btn-primary" href="ordini?page=${page-1}">Pagina
+                                precedente</a>
+                        </li>
+                    </#if>
+                    <li class="page-item"><a class="btn btn-primary" href="ordini?page=${page+1}">Pagina
+                            successiva</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </#if>
 
     <#include "footer.ftl.html">
 

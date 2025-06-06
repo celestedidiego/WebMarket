@@ -41,7 +41,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <td class="left">📦 ${ordine.statoConsegna!""}</td>
                         <td class="left">${ordine.feedback!""}</td>
                         <td class="left">${ordine.dataConsegna!""}</td>
-                        <td class="left">${ordine.proposta.nomeProdotto!""}</td>
+                        <td class="left">${ordine.propostaAcquisto.nomeProdotto!""}</td>
                         <td>
                             <!-- La seconda condizione non serve ma è giusto per stare sicuri -->
                             <#if ordine.feedback?? || ordine.statoConsegna != "Consegnato">
@@ -62,26 +62,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </tbody>
             </table>
         </div>
-
-        <#if page?? >
-            <div class="paginazione">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <#if page == 0>
-                            <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
-                        <#else>
-                            <li class="page-item"><a class="btn btn-primary" href="storico?page=${page-1}">Pagina
-                                    precedente</a>
-                            </li>
-                        </#if>
-                        <li class="page-item"><a class="btn btn-primary" href="storico?page=${page+1}">Pagina
-                                successiva</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </#if>
     </div>
+
+    <#if page?? >
+        <div class="paginazione">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <#if page == 0>
+                        <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
+                    <#else>
+                        <li class="page-item"><a class="btn btn-primary" href="storico?page=${page-1}">Pagina
+                                precedente</a>
+                        </li>
+                    </#if>
+                    <li class="page-item"><a class="btn btn-primary" href="storico?page=${page+1}">Pagina
+                            successiva</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </#if>
 
     <div class="popup-container" id="add" style="display: ${visibilityModify!"none"}">
         <div class="popup">

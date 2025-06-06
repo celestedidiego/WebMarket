@@ -49,15 +49,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <#else> 1
                                 </#if>
                             </td>
-                            <td>${ordine.proposta.codiceProdotto}</td>
+                            <td>${ordine.propostaAcquisto.codiceProdotto}</td>
                             <td>${ordine.statoConsegna}</td>
-                            <td>${ordine.proposta.nomeProdotto + ", "+ordine.proposta.produttore}
-                                <br> ${ordine.proposta.prezzo + "€"} </td>
+                            <td>${ordine.propostaAcquisto.nomeProdotto + ", "+ordine.propostaAcquisto.produttore}
+                                <br> ${ordine.propostaAcquisto.prezzo + "€"} </td>
                             <td>
-                                <a href="${ordine.proposta.URL}" target="_blank">Link</a>
+                                <a href="${ordine.propostaAcquisto.URL}" target="_blank">Link</a>
                             </td>
                             <td>
-                                <form method="POST" action="tecnico_ordini_gestione_ordini?page=${page}">
+                                <form method="POST" action="tecnico_gestione_ordini?page=${page}">
                                     <input type="hidden" name="id" value="${ordine.key}">
                                     <#if (ordine.statoConsegna)=="Presa in carico">
                                         <input class="btn btn-primary" type="submit" id="ordine" name="ordine"

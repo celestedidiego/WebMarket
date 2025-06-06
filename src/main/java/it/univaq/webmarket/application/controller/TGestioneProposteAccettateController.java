@@ -96,7 +96,7 @@ public class TGestioneProposteAccettateController extends ApplicationBaseControl
                 datamodel.put("page", 0);
             }
 
-            result.activate("TestioneProposteAccettate.ftl.html", datamodel, request, response);
+            result.activate("TGestioneProposteAccettate.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

@@ -48,9 +48,9 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
             sOrdiniByOrdinante = connection.prepareStatement(
                     "SELECT o2.ID " +
                     "FROM ordinante o " +
-                    "JOIN richiesta r ON o.ID = r.ordinanteID " +
+                    "JOIN richiestaordine r ON o.ID = r.ordinanteID " +
                     "JOIN richiestapresaincarico r2 ON r.ID = r2.richiestaOrdineID " +
-                    "JOIN proposta p ON r2.ID = p.richiestaPresaInCaricoID " +
+                    "JOIN propostaacquisto p ON r2.ID = p.richiestaPresaInCaricoID " +
                     "JOIN ordine o2 ON p.ID = o2.propostaAcquistoID " +
                     "WHERE o.ID = ? LIMIT ?, ?");
             sOrdiniByTecnico = connection.prepareStatement("SELECT * FROM ordine WHERE tecnicoID=? LIMIT ?, ?");
