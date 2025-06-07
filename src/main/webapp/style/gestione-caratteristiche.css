@@ -42,10 +42,11 @@ h1 {
 }
 
 .table th, .table td {
-    padding: 10px 50px;
+    padding: 10px 16px;
     border-bottom: 1px solid #e9ecef;
     vertical-align: middle;
     font-size: 1rem;
+    text-align: center;
 }
 
 .table th {
@@ -74,15 +75,25 @@ h1 {
     min-width: 90px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .table th, .table td {
-        padding: 10px 6px;
-        font-size: 0.95rem;
+        padding: 10px 1px;
+        font-size: 0.85rem;
     }
     .row {
         flex-direction: column;
         gap: 1rem;
+    }
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
     }
 }
 

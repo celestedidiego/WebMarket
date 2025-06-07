@@ -174,3 +174,27 @@ header, .footer {
     display: flex;
     justify-content: center;
 }
+
+.btn-indietro {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    display: inline-flex !important;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 600px) {
+    header, .footer {
+        left: 0;
+        right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    body {
+        overflow-x: hidden;
+    }
+}

@@ -98,7 +98,7 @@ public class AGestioneCategoriaFiglioController extends ApplicationBaseControlle
 
             }
 
-            result.activate("categoriaFiglio.ftl", datamodel, request, response);
+            result.activate("categoriaFiglio.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

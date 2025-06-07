@@ -136,7 +136,10 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
             String id_categoria_genitore = request.getParameter("id_categoria_genitore");
 
             if (request.getParameter("sceltaCategoriaFiglio") != null) {
-                categoriaNipote.getCategoriaGenitore().setKey(Integer.parseInt(request.getParameter("sceltaCategoriaFiglio")));
+                CategoriaFiglio nuovaCategoriaGenitore = dl.getCategoriaDAO().getCategoriaFiglio(
+                    Integer.parseInt(request.getParameter("sceltaCategoriaFiglio"))
+                );
+                categoriaNipote.setCategoriaGenitore(nuovaCategoriaGenitore);
             }
 
             dl.getCategoriaDAO().storeCategoriaNipote(categoriaNipote);

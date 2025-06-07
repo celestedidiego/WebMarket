@@ -30,7 +30,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <th scope="col" class="left fixed-width">Note</th>
                     <th scope="col" class="data-column left">Data</th>
                     <th scope="col">Caratteristiche</th>
-                    <th scope="col">Modifica</th>
+                    <th scope="col">Stato</th>
                 </tr>
                 </thead>
                 <tbody id="tbody">
@@ -46,10 +46,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             </form>
                         </td>
                         <td>
-                            <form method="POST" action="richieste?page=${page!"0"}">
-                                <input type="hidden" id="id" name="id" value="${richiesta.key}">
-                                <input class="btn btn-primary" type="submit" id="render" name="render" value="Modifica">
-                            </form>
+                            <#if richiesta.presaInCarico?? && richiesta.presaInCarico>
+                                <span class="text-success"><i class="fas fa-check-circle"></i> Presa in carico</span>
+                            <#else>
+                                <span class="text-secondary"><i class="fas fa-clock"></i> In attesa</span>
+                            </#if>
                         </td>
                     </tr>
                 </#list>
@@ -75,35 +76,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             </div>
         </#if>
     </div>
-    
-    <div class="popup-container" id="add" style="display: ${visibilityModify!"none"}">
-        <div class="popup">
-
-            <div class="update-screen">
-                <h4 class="d-flex align-items-center">Modifica Richiesta</h4>
-                <p class="p-3"></p>
-                <form method="POST" action="richieste?page=${page!"0"}">
-
-                    <input type="hidden" name="id" value="${(richiestaDaModificare.key)!"0"}">
-                    <label for="note">Inserisci nuove note: </label>
-                    <textarea class="textarea-note form-control" name="note" rows="4" cols="50"
-                              id="note">${(richiestaDaModificare.note)!"0"}</textarea>
-                    <p class="p-1"></p>
-                    <div class="buttons-choose">
-                        <input class="btn btn-primary" type="submit" id="action" name="action" value="Modifica">
-                        <a class="btn btn-danger" href="richieste?page=${page!0}">Annulla</a>
-                    </div>
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-
-    <span class="invisible" id="success">${success!"0"}</span>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="module" src="/WebMarket/scripts/richiesta.js"></script>
 
     <#include "footer.ftl.html">
 

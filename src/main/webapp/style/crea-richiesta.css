@@ -29,3 +29,28 @@
 .label-caratteristica {
     margin-bottom: .3rem;
 }
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        margin-top: 2rem !important;
+        padding: 0 0.5rem !important;
+    }
+    .left-content, .right-content {
+        width: 100% !important;
+        min-width: unset !important;
+        margin-top: 1rem !important;
+    }
+    .select-size {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+    .button-submit {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .textarea-note {
+        width: 100% !important;
+    }
+}

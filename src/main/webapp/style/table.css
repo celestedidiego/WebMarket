@@ -67,7 +67,7 @@ h1 {
 }
 
 .table td a {
-    color: #007bff;
+    color: #000000;
     text-decoration: underline;
 }
 
@@ -123,8 +123,8 @@ h1 {
 /* Responsive */
 @media (max-width: 768px) {
     .table th, .table td {
-        padding: 10px 6px;
-        font-size: 0.95rem;
+        padding: 10px 1px;
+        font-size: 0.85rem;
     }
     .row {
         flex-direction: column;

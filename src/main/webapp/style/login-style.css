@@ -15,7 +15,6 @@ body {
 .container {
     background-color: var(--white);
     max-width: 35vw; 
-    height: 35rem;
     padding: 30px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
@@ -182,7 +181,7 @@ header > div {
 
 @media (max-width: 600px) {
     body {
-        display: block;
+        display: flex;
         padding: 0;
         min-height: 0;
         background-color: var(--white);
