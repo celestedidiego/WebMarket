@@ -25,26 +25,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <h1>Ordini</h1>
 
         <div class="row">
+            <div class="table-responsive">
             <table class="table">
-                <thead class="thead-dark">
+                <thead>
                 <tr>
                     <th scope="col" class="left">Stato Consegna</th>
-                    <th scope="col" class="left">Feedback</th>
+                    <th scope="col" class="left">Risposta</th>
                     <th scope="col" class="left">Data di Consegna</th>
                     <th scope="col" class="left">Prodotto</th>
-                    <th scope="col">Aggiungi Feedback</th>
+                    <th scope="col">Aggiungi Risposta</th>
                 </tr>
                 </thead>
                 <tbody id="tbody">
                 <#list ordini as ordine>
                     <tr>
                         <td class="left">📦 ${ordine.statoConsegna!""}</td>
-                        <td class="left">${ordine.feedback!""}</td>
+                        <td class="left">${ordine.risposta!""}</td>
                         <td class="left">${ordine.dataConsegna!""}</td>
                         <td class="left">${ordine.propostaAcquisto.nomeProdotto!""}</td>
                         <td>
                             <!-- La seconda condizione non serve ma è giusto per stare sicuri -->
-                            <#if ordine.feedback?? || ordine.statoConsegna != "Consegnato">
+                            <#if ordine.risposta?? || ordine.statoConsegna != "Consegnato">
                             <a class="btn btn-secondary disabled">Aggiungi</a>
                             <#else>
                             <#if id??>
@@ -61,6 +62,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </#list>
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 
@@ -88,19 +90,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <div class="update-screen">
                 <div class="titolo-popup">
-                    <h4>Aggiungi feedback</h4>
+                    <h4>Aggiungi risposta</h4>
                 </div>
                 <#if id??>
                 <form method="POST" accept-charset="UTF-8" action="storico?id=${id}" class="contenuto-form-popup">
                     <#else>
                     <form method="POST" accept-charset="UTF-8" action="storico?page=${page!"0"}"
                           class="contenuto-form-popup">
-                        <input type="hidden" id="id" name="id" value="${(ordineDaFeedbackare.key)!"0"}">
+                        <input type="hidden" id="id" name="id" value="${(ordineDaRispondere.key)!"0"}">
                         </#if>
-                        <label for="feedback">Scegli Feedback: </label>
-                        <select id="feedback" name="feedback" class="form-select mb-2">
-                            <#list feedbacks as feedback>
-                                <option value="${feedback}">${feedback}</option>
+                        <label for="risposta">Scegli Risposta: </label>
+                        <select id="risposta" name="risposta" class="form-select mb-2">
+                            <#list risposte as risposta>
+                                <option value="${risposta}">${risposta}</option>
                             </#list>
                         </select>
                         <div class="buttons-choose">

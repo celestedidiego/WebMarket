@@ -54,7 +54,7 @@ public class AGestioneOrdinantiController extends ApplicationBaseController {
             handleError(e, request, response);
         }
 
-        result.activate("gestioneOrdinanti.ftl.html", datamodel, request, response);
+        result.activate("aGestioneOrdinanti.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer ordinante_key) throws TemplateManagerException, IOException {
@@ -74,7 +74,7 @@ public class AGestioneOrdinantiController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
             datamodel.put("visibilityUpdate", "flex");
-            result.activate("gestioneOrdinanti.ftl.html", datamodel, request, response);
+            result.activate("aGestioneOrdinanti.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -124,7 +124,7 @@ public class AGestioneOrdinantiController extends ApplicationBaseController {
                 handleError(e, request, response);
             }
 
-            result.activate("gestioneOrdinanti.ftl.html", datamodel, request, response);
+            result.activate("aGestioneOrdinanti.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -148,7 +148,7 @@ public class AGestioneOrdinantiController extends ApplicationBaseController {
             }
             datamodel.put("visibilityInsert", "flex");
 
-            result.activate("gestioneOrdinanti.ftl.html", datamodel, request, response);
+            result.activate("aGestioneOrdinanti.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -180,7 +180,7 @@ public class AGestioneOrdinantiController extends ApplicationBaseController {
                 datamodel.put("ordinanti", dl.getOrdinanteDAO().getAllOrdinanti(0));
                 datamodel.put("page", 0);
             }
-            result.activate("gestioneOrdinanti.ftl.html", datamodel, request, response);
+            result.activate("aGestioneOrdinanti.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

@@ -67,7 +67,7 @@ public class TVisualizzaRichiestePreseInCaricoController extends ApplicationBase
             handleError(e, request, response);
         }
 
-        result.activate("richiestePreseInCarico.ftl.html", datamodel, request, response);
+        result.activate("tRichiestePreseInCarico.ftl.html", datamodel, request, response);
     }
 
     private void renderCaratteristiche(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException{
@@ -105,7 +105,7 @@ public class TVisualizzaRichiestePreseInCaricoController extends ApplicationBase
                 datamodel.put("richiestePreseInCarico", dl.getRichiestaPresaInCaricoDAO().getAllRichiestePresaInCaricoByTecnico(tecnico, 0));
             }
 
-            result.activate("richiestePreseInCarico.ftl.html", datamodel, request, response);
+            result.activate("tRichiestePreseInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -146,7 +146,7 @@ public class TVisualizzaRichiestePreseInCaricoController extends ApplicationBase
                 datamodel.put("richiestePreseInCarico", dl.getRichiestaPresaInCaricoDAO().getAllRichiestePresaInCaricoByTecnico(tecnico, 0));
             }
 
-            result.activate("richiestePreseInCarico.ftl.html", datamodel, request, response);
+            result.activate("tRichiestePreseInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -250,7 +250,7 @@ public class TVisualizzaRichiestePreseInCaricoController extends ApplicationBase
                 datamodel.put("richieste", dl.getRichiestaPresaInCaricoDAO().getAllRichiestePresaInCaricoByTecnico(tecnico, 0));
             }
 
-            result.activate("richiestePreseInCarico.ftl.html", datamodel, request, response);
+            result.activate("tRichiestePreseInCarico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

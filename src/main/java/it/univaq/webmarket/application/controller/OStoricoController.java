@@ -68,13 +68,13 @@ public class OStoricoController extends ApplicationBaseController {
                 handleError(e, request, response);
             }
 
-            result.activate("storico.ftl.html", datamodel, request, response);
+            result.activate("oStorico.ftl.html", datamodel, request, response);
         } catch (TemplateManagerException e) {
             handleError(e, request, response);
         }
     }
 
-    private void renderAddFeedback(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException {
+    private void renderAddrisposta(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException {
         try {
             WebmarketDataLayer dl = (WebmarketDataLayer) request.getAttribute("datalayer");
             TemplateResult result = new TemplateResult(getServletContext());
@@ -91,7 +91,7 @@ public class OStoricoController extends ApplicationBaseController {
 
                 datamodel.put("page", page);
                 datamodel.put("visibilityModify", "flex");
-                datamodel.put("ordineDaFeedbackare", ordine);
+                datamodel.put("ordineDaRispondere", ordine);
                 datamodel.put("risposte", List.of(Ordine.Risposta.ACCETTATO, Ordine.Risposta.RESPINTO, Ordine.Risposta.RIFIUTATO));
                 datamodel.put("ordini", dl.getOrdineDAO().getStorico(ordinante, page));
             } else if (parameterMap.containsKey("id")) {
@@ -101,7 +101,7 @@ public class OStoricoController extends ApplicationBaseController {
                 Ordine ordine = dl.getOrdineDAO().getOrdineInStorico(ordineId);
 
                 datamodel.put("visibilityModify", "flex");
-                datamodel.put("ordineDaFeedbackare", ordine);
+                datamodel.put("ordineDaRispondere", ordine);
                 datamodel.put("risposte", List.of(Ordine.Risposta.ACCETTATO, Ordine.Risposta.RESPINTO, Ordine.Risposta.RIFIUTATO));
                 datamodel.put("ordini", List.of(ordine));
                 datamodel.put("id", ordineId);
@@ -112,13 +112,13 @@ public class OStoricoController extends ApplicationBaseController {
                 datamodel.put("ordini", dl.getOrdineDAO().getStorico(ordinante, 0));
             }
 
-            result.activate("storico.ftl.html", datamodel, request, response);
+            result.activate("oStorico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
     }
 
-    private void handleAddFeedback(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException {
+    private void handleAddrisposta(HttpServletRequest request, HttpServletResponse response) throws TemplateManagerException {
         try {
             WebmarketDataLayer dl = (WebmarketDataLayer) request.getAttribute("datalayer");
             TemplateResult result = new TemplateResult(getServletContext());
@@ -172,7 +172,7 @@ public class OStoricoController extends ApplicationBaseController {
                 datamodel.put("risposte", List.of(Ordine.Risposta.ACCETTATO, Ordine.Risposta.RESPINTO, Ordine.Risposta.RIFIUTATO));
             }
 
-            result.activate("storico.ftl.html", datamodel, request, response);
+            result.activate("oStorico.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -188,13 +188,13 @@ public class OStoricoController extends ApplicationBaseController {
                 //Se l'utente richiede qualche elemento non renderizzato
                 if ("Aggiungi".equals(parameterMap.get("render")[0])) {
                     //Se devo renderizzare il menù per il rifiuto della proposta
-                    renderAddFeedback(request, response);
+                    renderAddrisposta(request, response);
                 } else renderTemplate(request, response);
             } else if (parameterMap.containsKey("action")) {
                 // Se l'utente richiede un'azione
                 if ("Aggiungi".equals(parameterMap.get("action")[0])) {
                     // Se devo effettuare il rifiuto
-                    handleAddFeedback(request, response);
+                    handleAddrisposta(request, response);
                 } else renderTemplate(request, response);
             } else {
                 renderTemplate(request, response);

@@ -67,7 +67,7 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
             }
         }
 
-        result.activate("categoriaNipote.ftl.html", datamodel, request, response);
+        result.activate("aCategoriaNipote.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer categoriaNipote_key) throws TemplateManagerException, IOException {
@@ -99,7 +99,7 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
 
             }
 
-            result.activate("categoriaNipote.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaNipote.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -150,7 +150,7 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
 
 
             if (id_categoria_genitore.equals("null")) {
-                result.activate("categoriaNipote.ftl.html", datamodel, request, response);
+                result.activate("aCategoriaNipote.ftl.html", datamodel, request, response);
             } else {
                 response.sendRedirect("categoria_nipote?id_categoria_genitore=" + id_categoria_genitore + "&showAlert=1");
             }
@@ -179,7 +179,7 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
             } else {
                 datamodel.put("success", "-1"); //errore => non è stata selezionata nessuna categoria figlio
                 datamodel.put("categorie", dl.getCategoriaDAO().getAllCategorieNipote());
-                result.activate("categoriaNipote.ftl.html", datamodel, request, response);
+                result.activate("aCategoriaNipote.ftl.html", datamodel, request, response);
                 return;
             }
 
@@ -191,7 +191,7 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
             datamodel.put("success", "2"); //successo => categoria nipote aggiunta
 
 
-            result.activate("categoriaNipote.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaNipote.ftl.html", datamodel, request, response);
 
         } catch (DataException ex) {
             handleError(ex, request, response);
@@ -208,7 +208,7 @@ public class AGestioneCategoriaNipoteController extends ApplicationBaseControlle
             datamodel.put("categorieFiglio", dl.getCategoriaDAO().getAllCategorieFiglio());
             datamodel.put("visibilityInsert", "flex");
 
-            result.activate("categoriaNipote.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaNipote.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

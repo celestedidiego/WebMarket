@@ -42,11 +42,11 @@ public class RichiestaOrdineDAO_MySQL extends DAO implements RichiestaOrdineDAO 
         try {
             super.init();
 
-            iRichiestaOrdine = connection.prepareStatement("INSERT INTO richiestaOrdine (codice_richiesta, note, data, OrdineID) VALUES(?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
-            uRichiestaOrdine = connection.prepareStatement("UPDATE richiestaOrdine SET codice_richiesta=?, note=?, data=?, OrdineID=?, version=? WHERE ID=? AND version=?");
+            iRichiestaOrdine = connection.prepareStatement("INSERT INTO richiestaOrdine (codice_richiesta, note, data, ordinanteID) VALUES(?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+            uRichiestaOrdine = connection.prepareStatement("UPDATE richiestaOrdine SET codice_richiesta=?, note=?, data=?, ordinanteID=?, version=? WHERE ID=? AND version=?");
             dRichiestaOrdine = connection.prepareStatement("DELETE FROM richiestaOrdine WHERE ID=?");
             sRichiestaByID = connection.prepareStatement("SELECT * FROM richiestaOrdine WHERE ID=? ORDER BY data DESC");
-            sRichiesteByIDOrdinantePage = connection.prepareStatement("SELECT ID FROM richiestaOrdine WHERE OrdineID=? ORDER BY data DESC LIMIT ?,?");
+            sRichiesteByIDOrdinantePage = connection.prepareStatement("SELECT ID FROM richiestaOrdine WHERE ordinanteID=? ORDER BY data DESC LIMIT ?,?");
             sRichiesteNonGestite = connection.prepareStatement("SELECT r.ID FROM richiestaOrdine r LEFT JOIN richiestapresaincarico rp ON r.ID = rp.richiestaOrdineID  WHERE rp.richiestaOrdineID IS NULL ORDER BY r.data LIMIT ?, ?");
             checkCodiceRichiesta = connection.prepareStatement("SELECT 1 FROM RichiestaOrdine WHERE codice_richiesta = ?");
         } catch (SQLException ex) {
@@ -81,7 +81,7 @@ public class RichiestaOrdineDAO_MySQL extends DAO implements RichiestaOrdineDAO 
             ra.setCodiceRichiesta(rs.getString("codice_richiesta"));
             ra.setNote(rs.getString("note"));
             ra.setData(rs.getTimestamp("data").toLocalDateTime().toLocalDate());
-            ra.setOrdinante_key(rs.getInt("OrdineID"));
+            ra.setOrdinante_key(rs.getInt("ordinanteID"));
             ra.setVersion(rs.getLong("version"));
         } catch (SQLException ex) {
             throw new DataException("Unable to create Richiesta from ResultSet", ex);

@@ -40,7 +40,7 @@ public class OCreaRichiestaController extends ApplicationBaseController {
 
             datamodel.put("categoriePadre", dl.getCategoriaDAO().getAllCategoriePadre());
 
-            result.activate("creaRichiesta.ftl.html", datamodel, request, response);
+            result.activate("oCreaRichiesta.ftl.html", datamodel, request, response);
         } catch (DataException | TemplateManagerException ex) {
             handleError(ex, request, response);
         }

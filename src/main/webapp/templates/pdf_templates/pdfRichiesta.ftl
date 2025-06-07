@@ -79,7 +79,7 @@
     <hr></hr>
     <h3>Caratteristiche</h3>
     <table class="table">
-        <thead class="thead-dark">
+        <thead>
         <tr>
             <th scope="col" class="left">Nome</th>
             <th scope="col">Valore</th>

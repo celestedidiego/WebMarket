@@ -7,6 +7,7 @@ package it.univaq.webmarket.application.controller;
 
 import it.univaq.webmarket.application.ApplicationBaseController;
 import it.univaq.webmarket.application.WebmarketDataLayer;
+import it.univaq.webmarket.data.model.Ordinante;
 import it.univaq.webmarket.data.model.Ordine;
 import it.univaq.webmarket.data.model.PropostaAcquisto;
 import it.univaq.webmarket.data.model.Tecnico;
@@ -58,7 +59,7 @@ public class TGestioneProposteAccettateController extends ApplicationBaseControl
         }
 
 
-        result.activate("TGestioneProposteAccettate.ftl.html", datamodel, request, response);
+        result.activate("tGestioneProposteAccettate.ftl.html", datamodel, request, response);
     }
 
 
@@ -76,6 +77,9 @@ public class TGestioneProposteAccettateController extends ApplicationBaseControl
             ordine.setPropostaAcquisto(proposta);
             ordine.setTecnico(tecnico);
             ordine.setStatoConsegna(Ordine.StatoConsegna.PRESA_IN_CARICO);
+
+            Ordinante ordinante = proposta.getRichiestaPresaInCarico().getRichiestaOrdine().getOrdinante();
+            ordine.setOrdinante(ordinante);
 
             dl.getOrdineDAO().storeOrdine(ordine);
 
@@ -96,7 +100,7 @@ public class TGestioneProposteAccettateController extends ApplicationBaseControl
                 datamodel.put("page", 0);
             }
 
-            result.activate("TGestioneProposteAccettate.ftl.html", datamodel, request, response);
+            result.activate("tGestioneProposteAccettate.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

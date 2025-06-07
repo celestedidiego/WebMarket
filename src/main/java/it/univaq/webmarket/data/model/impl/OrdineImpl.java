@@ -5,6 +5,7 @@
 
 package it.univaq.webmarket.data.model.impl;
 
+import it.univaq.webmarket.data.model.Ordinante;
 import it.univaq.webmarket.data.model.Ordine;
 import it.univaq.webmarket.data.model.PropostaAcquisto;
 import it.univaq.webmarket.data.model.Tecnico;
@@ -23,6 +24,8 @@ public class OrdineImpl extends DataItemImpl<Integer> implements Ordine {
     private LocalDate dataConsegna;
     private Tecnico tecnico;
     private PropostaAcquisto propostaAcquisto;
+    private Ordinante ordinante;
+    private int ordinante_key;
 
     public OrdineImpl() {
         super();
@@ -83,6 +86,26 @@ public class OrdineImpl extends DataItemImpl<Integer> implements Ordine {
         this.dataConsegna = dataConsegna;
     }
 
+    @Override
+    public Ordinante getOrdinante() {
+        return ordinante;
+    }
+
+    @Override
+    public void setOrdinante(Ordinante ordinante) {
+        this.ordinante = ordinante;
+    }
+
+    @Override
+    public int getOrdinanteKey() {
+        return ordinante_key;
+    }
+
+    @Override
+    public void setOrdinanteKey(int key) {
+        this.ordinante_key = key;
+    }
+    
     @Override
     public String toString() {
         return "OrdineImpl{" +

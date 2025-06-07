@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(span.innerText);
     if (span.innerText === "1") {
 
-        sweetAlert("OK", "Feedback inserito con successo.", "success", () => {
+        sweetAlert("OK", "Risposta inserito con successo.", "success", () => {
         });
 
     }

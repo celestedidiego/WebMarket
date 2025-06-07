@@ -59,7 +59,7 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
             handleError(e, request, response);
         }
 
-        result.activate("categoriaPadre.ftl.html", datamodel, request, response);
+        result.activate("aCategoriaPadre.ftl.html", datamodel, request, response);
     }
 
     private void renderModify(HttpServletRequest request, HttpServletResponse response, Integer categoriaPadre_key) throws TemplateManagerException, IOException {
@@ -77,7 +77,7 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
             datamodel.put("page", page);
             datamodel.put("visibilityUpdate", "flex");
 
-            result.activate("categoriaPadre.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaPadre.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -122,7 +122,7 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
                 handleError(e, request, response);
             }
 
-            result.activate("categoriaPadre.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaPadre.ftl.html", datamodel, request, response);
 
         } catch (DataException ex) {
             handleError(ex, request, response);
@@ -147,7 +147,7 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
 
             datamodel.put("visibilityInsert", "flex");
 
-            result.activate("categoriaPadre.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaPadre.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -176,7 +176,7 @@ public class AGestioneCategoriaPadreController extends ApplicationBaseController
             }
             datamodel.put("success", "2"); // 2 = inserimento effettuato con successo
 
-            result.activate("categoriaPadre.ftl.html", datamodel, request, response);
+            result.activate("aCategoriaPadre.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

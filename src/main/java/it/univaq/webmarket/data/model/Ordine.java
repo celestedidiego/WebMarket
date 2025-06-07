@@ -10,6 +10,7 @@ import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateMethodModelEx;
 import freemarker.template.TemplateModelException;
 import it.univaq.webmarket.framework.data.DataItem;
+import it.univaq.webmarket.data.model.Ordinante;
 
 import java.time.LocalDate;
 
@@ -52,4 +53,12 @@ public interface Ordine extends DataItem<Integer> {
     PropostaAcquisto getPropostaAcquisto();
 
     void setPropostaAcquisto(PropostaAcquisto propostaAcquisto);
+
+    Ordinante getOrdinante();
+
+    void setOrdinante(Ordinante ordinante);
+
+    int getOrdinanteKey();
+    
+    void setOrdinanteKey(int key);
 }

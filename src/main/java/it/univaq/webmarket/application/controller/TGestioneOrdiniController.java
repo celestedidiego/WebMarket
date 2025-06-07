@@ -59,7 +59,7 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
         }
 
 
-        result.activate("TGestioneOrdini.ftl.html", datamodel, request, response);
+        result.activate("tGestioneOrdini.ftl.html", datamodel, request, response);
     }
 
 
@@ -74,6 +74,8 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
 
             ordine.setStatoConsegna(Ordine.StatoConsegna.IN_CONSEGNA);
 
+            ordine.setOrdinante(dl.getOrdinanteDAO().getOrdinante(ordine.getOrdinanteKey()));
+
             dl.getOrdineDAO().storeOrdine(ordine);
 
             datamodel.put("success", "1"); // Lo stato dell'ordine è: In Consegna.
@@ -87,7 +89,7 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
 
-            result.activate("TGestioneOrdini.ftl.html", datamodel, request, response);
+            result.activate("tGestioneOrdini.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }
@@ -101,8 +103,12 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
             Tecnico tecnico = dl.getTecnicoDAO().getTecnicoByEmail((String) SecurityHelpers.checkSession(request).getAttribute("email"));
 
             Ordine ordine = dl.getOrdineDAO().getOrdine(ordine_key);
+
             ordine.setStatoConsegna(Ordine.StatoConsegna.CONSEGNATO);
             ordine.setDataConsegna(LocalDate.now());
+
+            ordine.setOrdinante(dl.getOrdinanteDAO().getOrdinante(ordine.getOrdinanteKey()));
+
             dl.getOrdineDAO().storeOrdine(ordine);
 
             datamodel.put("success", "2"); // Lo stato dell'ordine è: Consegnato.
@@ -116,7 +122,7 @@ public class TGestioneOrdiniController extends ApplicationBaseController {
                 datamodel.put("page", 0);
             }
 
-            result.activate("TGestioneOrdini.ftl.html", datamodel, request, response);
+            result.activate("tGestioneOrdini.ftl.html", datamodel, request, response);
         } catch (DataException ex) {
             handleError(ex, request, response);
         }

@@ -37,8 +37,8 @@ h1 {
 }
 
 .table thead {
-    background: rgba(4, 55, 79, 0.8);
-    color: #fff;
+    background: rgba(4, 55, 79, 0.8) !important;
+    color: #fff !important;
 }
 
 .table th, .table td {
@@ -241,5 +241,16 @@ h1 {
     .popup {
         padding: 1rem;
         min-width: 90vw;
+    }
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
     }
 }

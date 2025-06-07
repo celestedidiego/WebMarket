@@ -42,19 +42,12 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
         try {
             super.init();
             sOrdineByID = connection.prepareStatement("SELECT * FROM ordine WHERE ID=?");
-            sOrdineInStoricoByID = connection.prepareStatement("SELECT ordineID FROM chiude WHERE ID=?");
-            iOrdine = connection.prepareStatement("INSERT INTO ordine(stato_consegna, tecnicoID, propostaAcquistoID) VALUES (?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
-            uOrdine = connection.prepareStatement("UPDATE ordine SET stato_consegna=?,feedback=?, tecnicoID=?, propostaAcquistoID=?, version=? WHERE ID=? AND version=?");
-            sOrdiniByOrdinante = connection.prepareStatement(
-                    "SELECT o2.ID " +
-                    "FROM ordinante o " +
-                    "JOIN richiestaordine r ON o.ID = r.ordinanteID " +
-                    "JOIN richiestapresaincarico r2 ON r.ID = r2.richiestaOrdineID " +
-                    "JOIN propostaacquisto p ON r2.ID = p.richiestaPresaInCaricoID " +
-                    "JOIN ordine o2 ON p.ID = o2.propostaAcquistoID " +
-                    "WHERE o.ID = ? LIMIT ?, ?");
+            sOrdineInStoricoByID = connection.prepareStatement("SELECT * FROM ordine WHERE ID=?");
+            iOrdine = connection.prepareStatement("INSERT INTO ordine(stato_consegna, tecnicoID, propostaAcquistoID, ordinanteID) VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+            uOrdine = connection.prepareStatement("UPDATE ordine SET stato_consegna=?,risposta=?, tecnicoID=?, propostaAcquistoID=?, ordinanteID=?, version=? WHERE ID=? AND version=?");
+            sOrdiniByOrdinante = connection.prepareStatement("SELECT ID FROM ordine WHERE ordinanteID=? LIMIT ?, ?");
             sOrdiniByTecnico = connection.prepareStatement("SELECT * FROM ordine WHERE tecnicoID=? LIMIT ?, ?");
-            sStoricoByOrdinante = connection.prepareStatement("SELECT ordineID FROM chiude WHERE ordinanteID=? LIMIT ?, ?");
+            sStoricoByOrdinante = connection.prepareStatement("SELECT ID FROM ordine WHERE ordinanteID=? LIMIT ?, ?");
         } catch (SQLException e) {
             throw new DataException("Error initializing webmarket data layer", e);
         }
@@ -90,6 +83,7 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
             o.setDataConsegna(rs.getTimestamp("data_di_consegna") != null ? rs.getTimestamp("data_di_consegna").toLocalDateTime().toLocalDate() : null);
             o.setTecnicoKey(rs.getInt("tecnicoID"));
             o.setPropostaAcquistoKey(rs.getInt("propostaAcquistoID"));
+            o.setOrdinanteKey(rs.getInt("ordinanteID"));
             return o;
         } catch (SQLException ex) {
             throw new DataException("Unable to create Ordine object form ResultSet", ex);
@@ -124,7 +118,7 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
             sOrdineInStoricoByID.setInt(1, key);
             try (ResultSet rs = sOrdineInStoricoByID.executeQuery()) {
                 if (rs.next()) {
-                    o = getOrdine(rs.getInt("ordineID"));
+                    o = createOrdine(rs);
                     dataLayer.getCache().add(Ordine.class, o);
                 }
             }
@@ -143,7 +137,7 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
             sStoricoByOrdinante.setInt(3, offset);
             try (ResultSet rs = sStoricoByOrdinante.executeQuery()) {
                 while (rs.next()) {
-                    int id = rs.getInt("ordineID");
+                    int id = rs.getInt("ID");
                     ordini.add(getOrdine(id));
                 }
             }
@@ -192,13 +186,10 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
     @Override
     public void storeOrdine(Ordine ordine) throws DataException {
         try {
-            if (ordine.getKey() != null && ordine.getKey() > 0) { //update
+            if (ordine.getKey() != null && ordine.getKey() > 0) { // update
                 if (ordine instanceof DataItemProxy && !((DataItemProxy) ordine).isModified()) {
                     return;
                 }
-
-                // Per la data di consegna ci pensa il trigger nel db ad inserirla quando vede
-                // che lo stato di consegna è "Consegnato"
 
                 uOrdine.setString(1, ordine.getStatoConsegna());
                 if (ordine.getRisposta() == null) {
@@ -208,24 +199,26 @@ public class OrdineDAO_MySQL extends DAO implements OrdineDAO {
                 }
                 uOrdine.setInt(3, ordine.getTecnico().getKey());
                 uOrdine.setInt(4, ordine.getPropostaAcquisto().getKey());
+                uOrdine.setInt(5, ordine.getOrdinante().getKey()); 
 
                 long current_version = ordine.getVersion();
                 long next_version = current_version + 1;
 
-                uOrdine.setLong(5, next_version);
-                uOrdine.setInt(6, ordine.getKey());
-                uOrdine.setLong(7, current_version);
+                uOrdine.setLong(6, next_version);
+                uOrdine.setInt(7, ordine.getKey());
+                uOrdine.setLong(8, current_version);
 
                 if (uOrdine.executeUpdate() == 0) {
                     throw new OptimisticLockException(ordine);
                 } else {
                     ordine.setVersion(next_version);
                 }
-            } else { //insert
+            } else { // insert
 
                 iOrdine.setString(1, ordine.getStatoConsegna());
                 iOrdine.setInt(2, ordine.getTecnico().getKey());
                 iOrdine.setInt(3, ordine.getPropostaAcquisto().getKey());
+                iOrdine.setInt(4, ordine.getOrdinante().getKey()); 
 
                 if (iOrdine.executeUpdate() == 1) {
                     try (ResultSet keys = iOrdine.getGeneratedKeys()) {

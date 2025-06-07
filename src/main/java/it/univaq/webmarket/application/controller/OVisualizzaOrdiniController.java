@@ -63,7 +63,7 @@ public class OVisualizzaOrdiniController extends ApplicationBaseController {
                 handleError(e, request, response);
             }
 
-            result.activate("ordini.ftl.html", datamodel, request, response);
+            result.activate("oOrdini.ftl.html", datamodel, request, response);
         } catch (TemplateManagerException e){
             handleError(e, request, response);
         }

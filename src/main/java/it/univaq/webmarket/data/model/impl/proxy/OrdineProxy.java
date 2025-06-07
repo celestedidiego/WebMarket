@@ -13,6 +13,8 @@ import it.univaq.webmarket.data.model.impl.OrdineImpl;
 import it.univaq.webmarket.framework.data.DataException;
 import it.univaq.webmarket.framework.data.DataItemProxy;
 import it.univaq.webmarket.framework.data.DataLayer;
+import it.univaq.webmarket.data.DAO.OrdinanteDAO;
+import it.univaq.webmarket.data.model.Ordinante;
 
 import java.time.LocalDate;
 import java.util.logging.Logger;
@@ -29,6 +31,8 @@ public class OrdineProxy extends OrdineImpl implements DataItemProxy {
 
     protected Integer tecnico_key;
     protected Integer propostaAcquisto_key;
+
+    protected Integer ordinante_key;
 
     public OrdineProxy(DataLayer d) {
         super();
@@ -120,5 +124,35 @@ public class OrdineProxy extends OrdineImpl implements DataItemProxy {
     public void setPropostaAcquistoKey(Integer key) {
         this.propostaAcquisto_key = key;
         super.setPropostaAcquisto(null);
+    }
+
+    @Override
+    public int getOrdinanteKey() {
+        return ordinante_key != null ? ordinante_key : 0;
+    }
+
+    @Override
+    public void setOrdinanteKey(int key) {
+        this.ordinante_key = key;
+        super.setOrdinante(null);
+    }
+
+    @Override
+    public Ordinante getOrdinante() {
+        if (super.getOrdinante() == null && ordinante_key != null && ordinante_key > 0) {
+            try {
+                super.setOrdinante(((OrdinanteDAO) dataLayer.getDAO(Ordinante.class)).getOrdinante(ordinante_key));
+            } catch (DataException ex) {
+                Logger.getLogger(OrdineProxy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+        }
+        return super.getOrdinante();
+    }
+
+    @Override
+    public void setOrdinante(Ordinante ordinante) {
+        super.setOrdinante(ordinante);
+        this.ordinante_key = (ordinante != null) ? ordinante.getKey() : 0;
+        this.modified = true;
     }
 }
