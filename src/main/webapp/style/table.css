@@ -1,0 +1,256 @@
+/* Layout principali */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    margin-top: 2rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.invisible {
+    display: none;
+}
+
+/* Tabella moderna */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-top: 20px;
+}
+
+.table thead {
+    background: rgba(4, 55, 79, 0.8) !important;
+    color: #fff !important;
+}
+
+.table th, .table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.table th {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: rgba(4, 55, 79, 0.8);
+    color: #fff;
+    border: none;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:hover {
+    background: #f1f7ff;
+    transition: background 0.2s;
+}
+
+.table td a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.table .btn {
+    min-width: 90px;
+}
+
+/* Bottoni */
+.btn-success {
+    background-color: rgba(4, 55, 79, 0.8) !important;
+    border-color: rgba(4, 55, 79, 0.8) !important;
+    color: #fff !important;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: rgba(4, 55, 79, 0.9) !important;
+    border-color: rgba(4, 55, 79, 0.9) !important;
+}
+
+.btn-primary {
+    background-color: #dba16a !important;
+    border-color: #dba16a !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #b97d3a !important;
+    border-color: #b97d3a !important;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.btn-danger:hover, .btn-danger:focus {
+    background-color: #a71d2a !important;
+    border-color: #a71d2a !important;
+}
+
+.btn-secondary {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #fff !important;
+    opacity: 0.7;
+}
+.btn-secondary.disabled, .btn-secondary:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 10px 1px;
+        font-size: 0.85rem;
+    }
+    .row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Pulsanti e form */
+.aggiungi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.buttons-choose {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.modifica-input {
+    margin-bottom: 10px;
+}
+
+.modify-screen, .update-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titolo-popup {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+}
+
+.contenuto-form-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+}
+
+/* Dropdown */
+.dropdownContainer {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.scelta-dropdown {
+    background: #0069d9;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    min-width: 200px;
+}
+
+.dropdown-scelta-item {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Paginazione */
+.paginazione {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.pagination {
+    gap: 1rem;
+}
+
+/* Popup overlay */
+.popup-container {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.popup {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    padding: 2rem;
+    min-width: 320px;
+    max-width: 95vw;
+}
+
+@media (max-width: 500px) {
+    .popup {
+        padding: 1rem;
+        min-width: 90vw;
+    }
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
+    }
+}

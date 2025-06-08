@@ -1,0 +1,11 @@
+<header>
+    <a class="header-a" href="<#if logininfo.role == 'ORDINANTE'>ordinante<#elseif logininfo.role == 'AMMINISTRATORE'>admin<#elseif logininfo.role == 'TECNICO'>tecnico</#if>">
+        <i class="fas fa-home"></i>
+    </a>
+    <div>
+        <div class="header-title">Web Market</div>
+    </div>
+    <a class="header-a" href="logout">
+        <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </a>
+</header>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="it">
+    <head>
+        <title>WebMarket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="icon" href="/WebMarket/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="/WebMarket/style/default.css">
+        <link rel="stylesheet" href="/WebMarket/style/table.css">
+    </head>
+    <body>
+        
+        <#include "header.ftl.html">
+        
+        <div class="container">
+            <h1>Gestione Categorie Nipote</h1>
+
+            <div id="aggiungi" class="aggiungi">
+                <form method="POST" action="categoria_nipote">
+                    <input class="btn btn-success" type="submit" name="render" id="render" value="Aggiungi"/>
+                </form>
+            </div>
+
+            <div class="row">
+
+                <div class="list">
+                    <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Categoria Genitore</th>
+                            <th scope="col">Modifica</th>
+                            <th scope="col">Elimina</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <#list categorie as categoria>
+                            <tr>
+                                <td>${categoria.nome}</td>
+                                <td>
+                                    <a href="categoria_figlio">
+                                        ${categoria.categoriaGenitore.nome}
+                                </td>
+                                <td>
+                                    <form method="POST" action="categoria_nipote">
+                                        <input type="hidden" name="id" value="${categoria.key}">
+                                        <input type="hidden" name="id_categoria_genitore"
+                                               value="${id_categoria_genitore!"null"}">
+                                        <input class="btn btn-primary" type="submit" id="render" name="render"
+                                               value="Modifica">
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="POST" action="categoria_nipote">
+                                        <input type="hidden" name="id" value="${categoria.key}">
+                                        <input type="hidden" name="id_categoria_genitore"
+                                               value="${id_categoria_genitore!"null"}">
+                                        <input class="btn btn-danger" type="submit" id="action" name="action"
+                                               value="Elimina">
+                                    </form>
+                                </td>
+                            </tr>
+                        </#list>
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--inizio div popup-->
+        <div class="popup-container" id="add" style="display: ${visibilityInsert!"none"}">
+            <div class="popup">
+                <!--fine div popup-->
+                <div class="update-screen">
+                    <div class="titolo-popup">
+                        <h4>Aggiunta Categoria Figlio</h4>
+                    </div>
+                    <form method="POST" action="categoria_nipote" class="contenuto-form-popup">
+                        <input type="hidden" name="id_categoria_genitore"
+                               value="${id_categoria_genitore!"null"}">
+                        <label for="nome">Inserisci nome:</label>
+                        <input class="form-control modifica-input" id="nome" name="nome" type="text" required>
+                        <div class="dropdownContainer">
+                            <select name="sceltaCategoriaFiglio" id="sceltaCategoriaFiglio" class="scelta-dropdown" required>
+                                <#if (categorieFiglio)??>
+                                    <#list categorieFiglio as categoriaFiglio>
+                                        <option class="dropdown-scelta-item"
+                                                value="${categoriaFiglio.key}">${categoriaFiglio.nome}</option>
+                                    </#list>
+                                </#if>
+                            </select>
+                        </div>
+                        <div class="buttons-choose">
+                            <input class="btn btn-primary" type="submit" id="action" name="action" value="Aggiungi">
+                            <#if (id_categoria_genitore)??>
+                                <a class="btn btn-danger"
+                                   href="categoria_nipote?id_categoria_genitore=${id_categoria_genitore}">Annulla</a>
+                            <#else>
+                                <a class="btn btn-danger" href="categoria_nipote">Annulla</a>
+                            </#if>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!--inizio div popup-->
+        <div class="popup-container" id="modify" style="display: ${visibilityUpdate!"none"}">
+            <div class="popup">
+                <!--fine div popup-->
+                <div class="modify-screen">
+                    <div class="titolo-popup">
+                        <h4>Modifica Categoria Nipote</h4>
+                    </div>
+                    <form method="POST" action="categoria_nipote" class="contenuto-form-popup">
+                        <input type="hidden" name="id_categoria_genitore"
+                               value="${id_categoria_genitore!"null"}">
+                        <label for="nome">Inserisci nuovo nome:</label>
+                        <label for="id"></label>
+                        <input type="text" id="id" name="id" style="display: none"
+                               value="${(categoriaModifica.key)!"0"}">
+                        <input class="form-control modifica-input" id="nome" name="nome" type="text"
+                               value="${(categoriaModifica.nome)!""}" required>
+
+                        <div class="dropdownContainer">
+                            <select name="sceltaCategoriaFiglio" id="sceltaCategoriaFiglio" class="scelta-dropdown" required>
+                                <option class="dropdown-scelta-item" value="${(categoriaGenitoreEsistente.key)!"0"}" selected
+                                        disabled
+                                        hidden>${(categoriaGenitoreEsistente.nome)!"Categoria Padre"}</option>
+                                <#if (categorieFiglio)??>
+                                    <#list categorieFiglio as categoriaFiglio>
+                                        <option class="dropdown-scelta-item"
+                                                value="${categoriaFiglio.key}">${categoriaFiglio.nome}</option>
+                                    </#list>
+                                </#if>
+                            </select>
+                        </div>
+
+
+                        <div class="buttons-choose">
+                            <input class="btn btn-primary" type="submit" id="action" name="action"
+                                   value="Modifica">
+                            <#if (id_categoria_genitore)??>
+                                <a class="btn btn-danger"
+                                   href="categoria_nipote?id_categoria_genitore=${id_categoria_genitore}">Annulla</a>
+                            <#else>
+                                <a class="btn btn-danger" href="categoria_nipote">Annulla</a>
+                            </#if>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <span class="invisible" id="success">${success!"0"}</span>
+
+        <#include "footer.ftl.html">
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="module" src="/WebMarket/scripts/categorie_nipote.js"></script>
+        
+    </body>
+</html>

@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+    flex-direction: row;
+}
+
+.left-content {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.select-size {
+    min-width: 20vw;
+    width: 20vw;
+}
+
+.input-value {
+    margin-right: .5rem;
+}
+
+.button-submit {
+    margin-top: 1rem;
+    max-width: fit-content;
+}
+
+.label-caratteristica {
+    margin-bottom: .3rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        margin-top: 2rem !important;
+        padding: 0 0.5rem !important;
+    }
+    .left-content, .right-content {
+        width: 100% !important;
+        min-width: unset !important;
+        margin-top: 1rem !important;
+    }
+    .select-size {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+    .button-submit {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    .textarea-note {
+        width: 100% !important;
+    }
+}

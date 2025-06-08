@@ -1,0 +1,115 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    margin-top: 2rem;
+}
+
+.row {
+    display: flex;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #e9e9e9;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.invisible {
+    display: none;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+}
+
+.modify-screen, .update-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modifica-input {
+    margin-bottom: 10px;
+}
+
+.buttons-choose {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+.dropdownContainer {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.scelta-dropdown {
+    display: flex;
+    gap: 1rem;
+    background: #0069d9;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+
+}
+
+.aggiungi {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.paginazione {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.pagination {
+    gap: 1rem;
+}

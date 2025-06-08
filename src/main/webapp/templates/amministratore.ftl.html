@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="it">
+    <head>
+        <title>WebMarket</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="/WebMarket/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="/WebMarket/style/default.css" type="text/css"/>
+        <link rel="stylesheet" href="/WebMarket/style/card.css" type="text/css">
+
+       
+    </head>
+    <body>
+        
+    <#include "header.ftl.html">
+    
+    <div class="container">
+        
+        <a class="card-a" href="#" id="gestione-categoria-card">
+            <div class="icon">📚</div>
+            <div class="separator"></div>
+            <div class="title">Gestione Categorie</div>
+            <div class="text">Gestisci categorie <b>padre</b>, <b>figlio</b> e <b>nipote</b></div>
+        </a>
+
+        <!-- Popup nascosto di default -->
+        <div id="categorie-popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:#0008; z-index:2000; align-items:center; justify-content:center;">
+            <div style="background:white; padding:2rem; border-radius:1rem; min-width:250px; display:flex; flex-direction:column; gap:1rem; align-items:center;">
+                <h3>Scegli la categoria</h3>
+                <a class="btn btn-primary" href="categoria_padre?page=0">Categoria Padre</a>
+                <a class="btn btn-primary" href="categoria_figlio?page=0">Categoria Figlio</a>
+                <a class="btn btn-primary" href="categoria_nipote?page=0">Categoria Nipote</a>
+                <button class="btn btn-secondary" id="close-categorie-popup">Chiudi</button>
+            </div>
+        </div>
+        
+        <a class="card-a" href="gestione_caratteristiche">
+            <div class="icon">🔍</div>
+            <div class="separator"></div>
+            <div class="title">Gestione caratteristiche</div>
+            <div class="text">Inserisci, modifica o cancella le <b>caratteristiche</b></div>
+        </a>
+        
+        <a class="card-a" href="gestione_ordinanti?page=0">
+            <div class="icon">🧑</div>
+            <div class="separator"></div>
+            <div class="title">Gestione ordinanti</div>
+            <div class="text">Inserisci, modifica o cancella gli <b>ordinanti</b></div>
+        </a>
+        
+        <a class="card-a" href="gestione_tecnici">
+            <div class="icon">️👷</div>
+            <div class="separator"></div>
+            <div class="title">Gestione tecnici</div>
+            <div class="text">Inserisci, modifica o cancella i <b>tecnici</b></div>
+        </a>
+    </div>
+    
+    <#include "footer.ftl.html">
+
+    <script>
+        document.getElementById('gestione-categoria-card').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('categorie-popup').style.display = 'flex';
+        });
+        document.getElementById('close-categorie-popup').addEventListener('click', function() {
+            document.getElementById('categorie-popup').style.display = 'none';
+        });
+    </script>
+
+    </body>
+</html>

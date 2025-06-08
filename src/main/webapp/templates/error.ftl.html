@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<!DOCTYPE html >
+<html lang="it">
+<head>
+    <title>Error ${error_code}</title>
+    <link rel="icon" href="/WebMarket/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="body">
+
+        <h1>Error ${error_code}</h1>
+        <p>The system encountered the following error while handling your request:</p>
+        <p>${error_message!"Unknown error"}</p>
+        <div><a href="${referrer!login}">Return to the previous page.</a></div>
+    </div>
+</body>
+</html>

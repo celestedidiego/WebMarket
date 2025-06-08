@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMarket</title>
+    <link rel="icon" href="/WebMarket/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/WebMarket/style/default.css">
+    <link rel="stylesheet" href="/WebMarket/style/table.css">
+</head>
+<body>
+
+    <#include "header.ftl.html">
+
+    <div class="richieste-container">
+        <h1>Richieste</h1>
+
+        <div class="row">
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col" class="left">Codice</th>
+                    <th scope="col" class="left fixed-width">Note</th>
+                    <th scope="col" class="data-column left">Data</th>
+                    <th scope="col">Caratteristiche</th>
+                    <th scope="col">Stato</th>
+                    <th scope="col">Azioni</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                <#list richieste as richiesta>
+                    <tr>
+                        <td class="left">${richiesta.codiceRichiesta}</td>
+                        <td class="left fixed-width">${richiesta.note}</td>
+                        <td class="data-column left">${richiesta.data}</td>
+                        <td>
+                            <form method="GET" action="caratteristiche">
+                                <input type="hidden" name="id_richiesta" value="${richiesta.key}">
+                                <input id="ModificaButton" class="btn btn-primary" type="submit" value="Caratteristiche">
+                            </form>
+                        </td>
+                        <td>
+                            <#if richiesta.presaInCarico?? && richiesta.presaInCarico>
+                                <span class="text-success"><i class="fas fa-check-circle"></i> Presa in carico</span>
+                            <#else>
+                                <span class="text-secondary"><i class="fas fa-clock"></i> In attesa</span>
+                            </#if>
+                        </td>
+                        <td>
+                            <#if !(richiesta.presaInCarico?? && richiesta.presaInCarico)>
+                                <form method="POST" action="richieste?page=${page!"0"}">
+                                    <input type="hidden" name="id" value="${richiesta.key}">
+                                    <input class="btn btn-danger" type="submit" id="action" name="action" value="Elimina">
+                                </form>
+                            </#if>
+                        </td>
+                    </tr>
+                </#list>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-pagination">
+        <#if page?? >
+            <div class="paginazione">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <#if page == 0>
+                            <li class="page-item"><a class="btn btn-secondary disabled">Pagina Precedente</a></li>
+                        <#else>
+                            <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page-1}">Pagina precedente</a></li>
+                        </#if>
+                        <li class="page-item"><a class="btn btn-primary" href="richieste?page=${page+1}">Pagina successiva</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </#if>
+    </div>
+
+    <#include "footer.ftl.html">
+
+</body>
+</html>
