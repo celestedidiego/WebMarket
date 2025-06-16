@@ -33,7 +33,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <th scope="col" class="left">Risposta</th>
                     <th scope="col" class="left">Data di Consegna</th>
                     <th scope="col" class="left">Prodotto</th>
-                    <th scope="col">Aggiungi Risposta</th>
+                    <th scope="col">Chiusura Ordine</th>
                 </tr>
                 </thead>
                 <tbody id="tbody">
@@ -90,7 +90,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             <div class="update-screen">
                 <div class="titolo-popup">
-                    <h4>Aggiungi risposta</h4>
+                    <h4>Chiudi Ordine</h4>
                 </div>
                 <#if id??>
                 <form method="POST" accept-charset="UTF-8" action="storico?id=${id}" class="contenuto-form-popup">
@@ -99,7 +99,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                           class="contenuto-form-popup">
                         <input type="hidden" id="id" name="id" value="${(ordineDaRispondere.key)!"0"}">
                         </#if>
-                        <label for="risposta">Scegli Risposta: </label>
+                        <label for="risposta">Scegli per la chiusura: </label>
                         <select id="risposta" name="risposta" class="form-select mb-2">
                             <#list risposte as risposta>
                                 <option value="${risposta}">${risposta}</option>

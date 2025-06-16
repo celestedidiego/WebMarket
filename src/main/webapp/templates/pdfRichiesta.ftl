@@ -67,7 +67,7 @@
 <div class="container">
     <header>
         <div>
-            <h1>MyWebmarket</h1>
+            <h1>WebMarket</h1>
         </div>
         <hr></hr>
     </header>
@@ -83,15 +83,13 @@
         <tr>
             <th scope="col" class="left">Nome</th>
             <th scope="col">Valore</th>
-            <th scope="col">Unità di Misura</th>
         </tr>
         </thead>
         <tbody id="tbody">
-        <#list richiesta.caratteristicheConValore as caratteristicaConValore>
+        <#list richiesta.caratteristicheRichiesta as caratteristicaRichiesta>
             <tr>
-                <td class="left">${caratteristicaConValore.caratteristica.nome}</td>
-                <td>${caratteristicaConValore.valore}</td>
-                <td>${caratteristicaConValore.caratteristica.unitaMisura}</td>
+                <td class="left">${caratteristicaRichiesta.caratteristica.nome}</td>
+                <td>${caratteristicaRichiesta.valore}</td>
             </tr>
         </#list>
         </tbody>

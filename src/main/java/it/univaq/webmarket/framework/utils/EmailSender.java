@@ -284,7 +284,7 @@ public class EmailSender {
                     Ordine ordineChiuso = (Ordine) obj;
 
                     datamodel.put("ordine", ordineChiuso);
-                    htmlresult = result.activate("pdfRichiestaChiusa.ftl", datamodel, new StringWriter());
+                    htmlresult = result.activate("pdfOrdineChiuso.ftl", datamodel, new StringWriter());
 
 
                     sb.append("Ordine chiuso").append("\n");

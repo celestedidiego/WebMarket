@@ -61,6 +61,10 @@
         tr:hover {
             background-color: #e9e9e9;
         }
+
+        .message-proposta-rifiutata {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -68,19 +72,38 @@
 <div class="container">
     <header>
         <div>
-            <h1>MyWebmarket</h1>
+            <h1>WebMarket</h1>
         </div>
         <hr></hr>
     </header>
+    <#if proposta.statoProposta == "Rifiutato">
+        <h1 class="message-proposta-rifiutata"><b>Proposta rifiutata</b></h1>
+        <hr></hr>
+    <#elseif proposta.statoProposta == "Accettato">
+        <h1><b>Proposta accettata</b></h1>
+        <hr></hr>
+    </#if>
+    <h3>Riepilogo Proposta</h3>
+    <div>Proposta: ${proposta.codiceProdotto}</div>
+    <div>Produttore: ${proposta.produttore}</div>
+    <div>Nome Prodotto: ${proposta.nomeProdotto}</div>
+    <div>Prezzo: ${proposta.prezzo}</div>
+    <div>Note: ${proposta.note}</div>
+    <div>Stato Proposta: ${proposta.statoProposta}</div>
+    <#if proposta.motivazione??>
+        <div>Motivazione: ${proposta.motivazione}</div>
+    </#if>
+    <div>Produttore: ${proposta.produttore}</div>
+    <hr></hr>
     <h3>Richiesta presa in carico</h3>
-    <div>Richiesta: ${richiestaPresaInCarico.richiesta.codiceRichiesta}</div>
-    <div>Tecnico dei Preventivi: ${richiestaPresaInCarico.tecnicoPreventivi.email}</div>
+    <div>Richiesta: ${proposta.richiestaPresaInCarico.richiestaOrdine.codiceRichiesta}</div>
+    <div>Tecnico: ${proposta.richiestaPresaInCarico.tecnico.email}</div>
     <hr></hr>
     <h3>Richiesta</h3>
-    <div>Richiesta: ${richiestaPresaInCarico.richiesta.codiceRichiesta}</div>
-    <div>Data: ${richiestaPresaInCarico.richiesta.data}</div>
-    <div>Email: ${richiestaPresaInCarico.richiesta.ordinante.email}</div>
-    <div>Note: ${richiestaPresaInCarico.richiesta.note}</div>
+    <div>Richiesta: ${proposta.richiestaPresaInCarico.richiestaOrdine.codiceRichiesta}</div>
+    <div>Data: ${proposta.richiestaPresaInCarico.richiestaOrdine.data}</div>
+    <div>Email: ${proposta.richiestaPresaInCarico.richiestaOrdine.ordinante.email}</div>
+    <div>Note: ${proposta.richiestaPresaInCarico.richiestaOrdine.note}</div>
     <hr></hr>
     <h3>Caratteristiche</h3>
     <table class="table">
@@ -88,19 +111,18 @@
         <tr>
             <th scope="col" class="left">Nome</th>
             <th scope="col">Valore</th>
-            <th scope="col">Unità di Misura</th>
         </tr>
         </thead>
         <tbody id="tbody">
-        <#list richiestaPresaInCarico.richiesta.caratteristicheConValore as caratteristicaConValore>
+        <#list proposta.richiestaPresaInCarico.richiestaOrdine.caratteristicheRichiesta as caratteristicaRichiesta>
             <tr>
-                <td class="left">${caratteristicaConValore.caratteristica.nome}</td>
-                <td>${caratteristicaConValore.valore}</td>
-                <td>${caratteristicaConValore.caratteristica.unitaMisura}</td>
+                <td class="left">${caratteristicaRichiesta.caratteristica.nome}</td>
+                <td>${caratteristicaRichiesta.valore}</td>
             </tr>
         </#list>
         </tbody>
     </table>
+
 </div>
 
 </body>

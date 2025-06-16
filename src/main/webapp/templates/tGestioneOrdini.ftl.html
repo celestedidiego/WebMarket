@@ -39,6 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <th scope="col">Caratteristiche Proposta</th>
                         <th scope="col">Link</th>
                         <th scope="col">Modifica stato in:</th>
+                        <th scope="col">Chiusura ordine</th>
                     </tr>
                     </thead>
                     <tbody id="tbody">
@@ -71,6 +72,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                     </#if>
 
                                 </form>
+                            </td>
+                            <td>
+                                <#if ordine.risposta?has_content>
+                                    ${ordine.risposta}
+                                <#else>
+                                    -
+                                </#if>
                             </td>
                         </tr>
                     </#list>

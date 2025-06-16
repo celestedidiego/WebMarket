@@ -52,11 +52,11 @@ public class ApplicationInitializer implements ServletContextListener {
             String passwordSender = (String) ctx.lookup("java:comp/env/password");
 
             Properties properties = System.getProperties();
-            properties.put("mail.smtp.host", "smtp-mail.outlook.com");
-            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.host", "sandbox.smtp.mailtrap.io"); // MailTrap host
+            properties.put("mail.smtp.port", "2525"); // MailTrap port
             properties.put("mail.smtp.starttls.enable", "true");
             properties.put("mail.smtp.auth", "true");
-            properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
+            properties.put("mail.smtp.ssl.protocols", "TLSv1.2");;
 
             sender = new EmailSender(emailSender, passwordSender, properties);
         } catch (NamingException ex) {
